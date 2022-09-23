@@ -9,25 +9,20 @@ layout: page
 <h2>Skills</h2>
 
 <ul class="skill-list">
-	<li>HTML - Jade - Haml - Erb</li>
-	<li>Responsive (Mobile First)</li>
-	<li>CSS (Stylus, Sass, Less)</li>
-	<li>Css Frameworks (Bootstrap, Foundation)</li>
-	<li>Javascript (Design Patterns, Testes)</li>
-	<li>AngularJS - ReactJS</li>
-	<li>Grunt - Gulp - Yeoman</li>
-	<li>Git</li>
-	<li>PHP</li>
-	<li>Python</li>
-	<li>MySQL - MongoDB</li>
-	<li>Scrum and Kanban</li>
-	<li>TDD e Continuous Integration</li>
+	<li>Password guessing and cracking</li>
+	<li>Session hijacking</li>
+	<li>Session spoofing</li>
+	<li>Network traffic sniffing</li>
+	<li>Denial of Service attacks</li>
+	<li>Exploiting buffer overflow vulnerabilities</li>
+	<li>SQL injection</li>
+	<li>OSINT</li>
 </ul>
 
-<h2>Projects</h2>
+<h2>Affordable online investigations</h2>
 
 <ul>
-	<li><a href="https://github.com/">Lorem Lorem</a></li>
-	<li><a href="https://github.com/">Ipsum Dolor</a></li>
-	<li><a href="https://github.com/">Dolor Lorem</a></li>
+	<li>We charge much less than the competition</li>
+	<li>$10 to find an address, workplace, etc,</li>
+	<li>$50 per dox, $100 for private investigations</li>
 </ul>

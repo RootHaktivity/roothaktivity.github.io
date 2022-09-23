@@ -1,6 +1,7 @@
 # main text of home
 title: RootHaktivity
-bio: Technology can be a global village. Welcome to our Global Village.
+bio: It is not data that is being exploited,
+      it’s people that are being exploited.
 
 # twitter summary info
 description: A blog about technology and stuff related
@@ -44,7 +45,8 @@ email: myemail@gmail.com
 authors:
   johndoe:
     name: RootHaktivity
-    bio: Technology can be a global village. Welcome to our Global Village
+    bio: It is not data that is being exploited,
+          it’s people that are being exploited.
     external-image: false
     picture: assets/images/profile.jpg
     twitter: johndoe

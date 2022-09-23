@@ -19,7 +19,7 @@ dark-theme: auto
 # and specify source (external or local).
 external: true
 external-site: true
-external-url: https://google.com/?q=my+resume
+external-url: https://google.com/
 
 url: https://roothaktivity.github.io
 # your url: https://USERNAME.github.io

@@ -30,7 +30,7 @@ permalink: /:title/
 # analytics-google: 'UA-MYANALYTICS'
 
 # if you don't want comments in your posts, leave categories empty
-disqus:
+disqus: roothaktivity
   shortname: github # enter this from your disqus account
   categories: [blog, project] # only show disqus for posts that have these categories
 
@@ -44,14 +44,8 @@ authors:
     bio: It is not data that is being exploited,
           it’s people that are being exploited.
     external-image: false
-    picture: assets/images/profile.jpg
+    picture: assets/images/Root-HaktivityPurple.png
     twitter: johndoe
-  jamesfoster:
-    name: James Foster
-    bio: A Man who develops software with coffee
-    external-image: false
-    picture: assets/images/james.jpg
-    twitter: jamesfoster
 
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal

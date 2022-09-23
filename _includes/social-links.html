@@ -31,6 +31,12 @@
         </a>
     {% endif %}
 
+    {% if site.discord %}
+        <a class="link" data-title="discord.gg/{{ site.discord }}" href="https://discord.gg/{{ site.discord }}" target="_blank"  rel="noopener">
+            <i class="fa-brands fa-discord"></i>
+        </a>
+    {% endif %}
+
     {% if site.email %}
         <a class="link" data-title="{{ site.email }}" href="mailto:{{ site.email }}"  rel="noopener">
             <i class="fa-regular fa-envelope"></i>

@@ -17,9 +17,9 @@ dark-theme: auto
 
 # If you want to include your resume, set to true
 # and specify source (external or local).
-resume: false
-resume-external: true
-resume-url: https://google.com/?q=my+resume
+external: true
+external-site: true
+external-url: https://google.com/?q=my+resume
 
 url: https://roothaktivity.github.io
 # your url: https://USERNAME.github.io

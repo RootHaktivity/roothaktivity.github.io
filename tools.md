@@ -3,7 +3,7 @@ title: Tools
 layout: page
 ---
 
-![Enum4linux]({{site.baseurl}}{{ site.baseimg }}/assets/E4L-Logo.png)
+![Enum4linux]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/E4L-Logo.png)
 
 Enum4linux is a tool for enumerating information from Windows and Samba systems.
 very useful during CTF if you're facing a Windows machine, it can help you find
@@ -15,7 +15,7 @@ It does come preinstalled with most Security Distros.
 
 
 
-![John]({{site.baseurl}}{{ site.baseimg }}/assets/JTR-Logo.png)
+![John]({{site.baseurl}}{{ site.baseimg }}images/GameZone/JTR-Logo.png)
 
 John the Ripper is an Open Source password security auditing and password recovery
 tool available for many operating systems. John the Ripper jumbo supports hundreds
@@ -31,7 +31,7 @@ These are just some of the examples - there are many more.
 [Read-More](https://www.openwall.com/john/pro/linux/)
 +============================================+
 
-![Hashcat]({{site.baseurl}}{{ site.baseimg }}/assets/hashcat-logo.png)
+![Hashcat]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/hashcat-logo.png)
 
 Hashcat is a popular and effective password cracker widely used by both penetration
 testers and sysadmins as well as criminals and spies. Cracking passwords is different
@@ -43,7 +43,7 @@ to recover those passwords.
 [Read-More](https://github.com/hashcat/hashcat)
 +============================================+
 
-![Burp]({{site.baseurl}}{{ site.baseimg }}/assets/Burp-Logo.png)
+![Burp]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/Burp-Logo.png)
 
 
 Feature-limited manual tools for researchers and hobbyists
@@ -57,7 +57,7 @@ More info here on the [Enterprise Edition](https://portswigger.net/burp/enterpri
 [Read-More](https://portswigger.net/burp/communitydownload)
 +============================================+
 
-![Metasploit]({{site.baseurl}}{{ site.baseimg }}/assets/Metasploit-Logo.png)
+![Metasploit]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/Metasploit-Logo.png)
 
 The Metasploit Project is a computer security project that shows the vulnerabilities
 and aids in Penetration Testing. Penetration Testing is an authorized simulated attack

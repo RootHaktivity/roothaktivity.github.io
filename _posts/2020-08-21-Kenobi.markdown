@@ -12,6 +12,5 @@ category: blog
 author: RootHaktivity
 description: Kenobi Walkthrough Video
 ---
-{% highlight html %}
+
 <iframe width="560" height="310" src="https://roothaktivity.github.io/vids/Kenobi/Kenobi_player.html" frameborder="0" allowfullscreen></iframe>
-{% endhighlight %}

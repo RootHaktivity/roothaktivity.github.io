@@ -13,5 +13,6 @@ author: RootHaktivity
 description: Kenobi Walkthrough Video
 ---
 
-
+{:kenobi: style="text-align: left;"}
 <iframe width="900" height="720" src="https://roothaktivity.github.io/vids/Kenobi/Kenobi_player.html" scrolling="no" frameborder="0" allowfullscreen></iframe>
+{: kenobi}

@@ -17,8 +17,8 @@ dark-theme: auto
 
 # If you want to include your resume, set to true
 # and specify source (external or local).
-external: true
-external-site: true
+external: false
+external-site: false
 external-url: https://google.com/
 
 url: https://roothaktivity.github.io
@@ -45,7 +45,7 @@ authors:
           it’s people that are being exploited.
     external-image: false
     picture: assets/images/Root-HaktivityPurple.png
-    twitter: johndoe
+    #twitter: johndoe
 
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal
@@ -66,7 +66,7 @@ projects: false
 # if you don't need "about" or "blog", comment them out below
 about: true
 blog: true
-google: https://google.com
+tools: true
 
 # do you want to show the "read time" of the posts?
 read-time: true

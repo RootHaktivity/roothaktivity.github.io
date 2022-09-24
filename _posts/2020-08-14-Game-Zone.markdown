@@ -2,8 +2,8 @@
 title: "THM Game Zone Writeup"
 layout: post
 date: 2016-02-24 22:48
-image: /assets/images/markdown.jpg
-headerImage: false
+image: /assets/images/GameZone/Gamer-Zone-Banner.png
+headerImage: true
 tag:
 - writeup
 - pentest
@@ -12,14 +12,6 @@ category: blog
 author: RootHaktivity
 description: Game Zone Writeup
 ---
-
-**How I Hacked GAME ZONE**
-
-
-{:refdef: style="text-align: center;"}
-[![GZ-Banner]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/Gamer-Zone-Banner.png)](https://tryhackme.com/room/gamezone)
-{: refdef}
-
 
 *TASK 2: Obtain access via SQLi
 

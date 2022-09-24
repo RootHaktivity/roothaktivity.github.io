@@ -16,6 +16,7 @@ the initial foothold.
 
 It does come preinstalled with most Security Distros.
 [Read-More](https://labs.portcullis.co.uk/tools/enum4linux/)
+
 +============================================+
 
 
@@ -34,6 +35,7 @@ private keys (SSH, GnuPG, cryptocurrency wallets, etc.), filesystems and disks
 These are just some of the examples - there are many more.
 
 [Read-More](https://www.openwall.com/john/pro/linux/)
+
 +============================================+
 
 ![Hashcat]({{site.baseurl}}{{ site.baseimg }}/assets/images/Tools/hashcat-logo.png)
@@ -46,6 +48,7 @@ system with encrypted passwords ("hashes") will often try to crack those hashes
 to recover those passwords.
 
 [Read-More](https://github.com/hashcat/hashcat)
+
 +============================================+
 
 ![Burp]({{site.baseurl}}{{ site.baseimg }}/assets/images/Tools/Burp-Logo.png)
@@ -60,6 +63,7 @@ these features when pentesting
 More info here on the [Enterprise Edition](https://portswigger.net/burp/enterprise)
 
 [Read-More](https://portswigger.net/burp/communitydownload)
+
 +============================================+
 
 ![Metasploit]({{site.baseurl}}{{ site.baseimg }}/assets/images/Tools/Metasploit-Logo.png)
@@ -79,4 +83,5 @@ computer system vulnerability.
 
 
 [Read-More](https://www.metasploit.com/)
+
 +============================================+

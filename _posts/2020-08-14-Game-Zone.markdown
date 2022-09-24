@@ -1,0 +1,139 @@
+---
+title: "THM Game Zone Writeup"
+layout: post
+date: 2016-02-24 22:48
+image: /assets/images/markdown.jpg
+headerImage: false
+tag:
+- writeup
+- pentest
+- tryhackme
+category: blog
+author: RootHaktivity
+description: Game Zone Writeup
+---
+
+**How I Hacked GAME ZONE**
+
+
+{:refdef: style="text-align: center;"}
+[![GZ-Banner]({{site.baseurl}}{{ site.baseimg }}/assets/Gamer-Zone-Banner.png)](https://tryhackme.com/room/gamezone)
+{: refdef}
+
+
+*TASK 2: Obtain access via SQLi
+
+![Login-Page]({{site.baseurl}}{{ site.baseimg }}/assets/login-page.png)
+
+Ok so on this task we need to open your browser, I am using firefox and that is because you can get ['FoxyProxy'](https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/) which will let you change your proxy settings faster
+Now let move on after you get your browser open then you can go to the ip address of the deployed site it will load a site after the site is loaded your going to want to log in with an SQL INJECTION. (see code box below)
+
+~~~
+' or 1=1-- -
+~~~
+
+![SQL-INJECTION]({{site.baseurl}}{{ site.baseimg }}/assets/SQL-INJECTION.png)
+
+*TASK 3: Using SQLMap
+After you login you will be presented with this page
+
+![Search]({{site.baseurl}}{{ site.baseimg }}/assets/search.png)
+
+on this page we need to intercept the search query and this is how we are going to do that
+
+Set your browser to use burp suite as a proxy either on Chrome, Firefox, etc. (this is where ['FoxyProxy'](https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/)) will come in handy) which will allow you to intercept the ‘search’ function. From this point we will copy what was intercepted from Burp Suite to a new text document.
+Open Terminal. run SQLmap against the text document that was created
+
+![Burp]({{site.baseurl}}{{ site.baseimg }}/assets/burp-i.png)
+
+~~~
+sqlmap -r Text-Document.txt --dbms=mysql --dump
+~~~
+
+![SQL-MAP]({{site.baseurl}}{{ site.baseimg }}/assets/Sql-Map.png)
+
+When prompted to include all tests for ‘MySQL’ respond with ‘Y’, as well as all other prompts that follows.
+
+![SQL-MAP-OUTPUT]({{site.baseurl}}{{ site.baseimg }}/assets/sqlmap-output.png)
+
+When asked if you want to crack the password via Dictionary-based attack respond with ‘Y’
+Utilize ‘Custom Dictionary File’ by selecting option ‘2’ with rockyou.txt being the Custom Dictionary File When prompted to use Common Password Suffixes respond with ‘Y’
+
+After running steps in SQLmap you should have all answers in this Task as well as
+Task 4 meaning you don't have to mess with John The Ripper.
+
+*Task 5: Exposing services with reverse SSH tunnels
+
+Q-#2: We can see that a service running on port 10000 is blocked via a firewall rule from the outside (we can see this from the IPtable list).
+However, Using an SSH Tunnel we can expose the port to us (locally)! From our local machine, run the line in the code box below
+Once complete, in your browser type "localhost:10000" and you can access the newly-exposed webserver.
+
+~~~
+ssh -L 10000:localhost:10000 <username>@<ip>
+~~~
+
+
+![SQL-MAP-OUTPUT]({{site.baseurl}}{{ site.baseimg }}/assets/WBMin-Login.png)
+
+after you have logged in to the page in the above image you will have all the info
+you need to answer the questions in this task.
+
+Reference Image
+![logedinpage]({{site.baseurl}}{{ site.baseimg }}/assets/Login-PageWB.png)
+
+The above image has had the info blured out so you can get the info for your self.
+
+*Task 6
+
+Ok so in this task we are going to use Metasploit to get the root flag.
+I had a bit of trouble with getting this to work but found out what the problem was
+so lets get started.
+
+Frist lets go ahead and start Metasploit
+
+~~~
+sudo msfconsole
+~~~
+
+After you have Metasploit running we are going to use search to find the version
+of the CMS from task 5 to see if we can find an exploit for the CMS version
+
+~~~
+search *.** <--- (replace the *.** with the version you find)
+~~~
+
+![search-version]({{site.baseurl}}{{ site.baseimg }}/assets/search-version.png)
+
+
+after you have the exploit set next we need to set options for the exploit
+
+
+![set-options]({{site.baseurl}}{{ site.baseimg }}/assets/set-options.png)
+
+
+Now we can just run the expoit
+
+
+![run-exploit]({{site.baseurl}}{{ site.baseimg }}/assets/run-exploit.png)
+
+
+Now we can show sessions
+~~~
+sessions -l
+~~~
+
+
+![show-sessions]({{site.baseurl}}{{ site.baseimg }}/assets/show-sessions.png)
+
+
+Next choose the number of the sessions displayed on your console
+
+~~~
+sessions -i 1
+~~~
+
+After your session starts you may end up with just a blinking cursor if so just reference the image below
+
+![session]({{site.baseurl}}{{ site.baseimg }}/assets/session.gif)
+
+now all you have to do is read the root.txt and your all done.

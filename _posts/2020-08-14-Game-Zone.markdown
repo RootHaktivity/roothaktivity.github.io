@@ -17,13 +17,13 @@ description: Game Zone Writeup
 
 
 {:refdef: style="text-align: center;"}
-[![GZ-Banner]({{site.baseurl}}{{ site.baseimg }}/assets/Gamer-Zone-Banner.png)](https://tryhackme.com/room/gamezone)
+[![GZ-Banner]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/Gamer-Zone-Banner.png)](https://tryhackme.com/room/gamezone)
 {: refdef}
 
 
 *TASK 2: Obtain access via SQLi
 
-![Login-Page]({{site.baseurl}}{{ site.baseimg }}/assets/login-page.png)
+![Login-Page]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/login-page.png)
 
 Ok so on this task we need to open your browser, I am using firefox and that is because you can get ['FoxyProxy'](https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/) which will let you change your proxy settings faster
 Now let move on after you get your browser open then you can go to the ip address of the deployed site it will load a site after the site is loaded your going to want to log in with an SQL INJECTION. (see code box below)
@@ -32,29 +32,29 @@ Now let move on after you get your browser open then you can go to the ip addres
 ' or 1=1-- -
 ~~~
 
-![SQL-INJECTION]({{site.baseurl}}{{ site.baseimg }}/assets/SQL-INJECTION.png)
+![SQL-INJECTION]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/SQL-INJECTION.png)
 
 *TASK 3: Using SQLMap
 After you login you will be presented with this page
 
-![Search]({{site.baseurl}}{{ site.baseimg }}/assets/search.png)
+![Search]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/search.png)
 
 on this page we need to intercept the search query and this is how we are going to do that
 
 Set your browser to use burp suite as a proxy either on Chrome, Firefox, etc. (this is where ['FoxyProxy'](https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/)) will come in handy) which will allow you to intercept the ‘search’ function. From this point we will copy what was intercepted from Burp Suite to a new text document.
 Open Terminal. run SQLmap against the text document that was created
 
-![Burp]({{site.baseurl}}{{ site.baseimg }}/assets/burp-i.png)
+![Burp]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/burp-i.png)
 
 ~~~
 sqlmap -r Text-Document.txt --dbms=mysql --dump
 ~~~
 
-![SQL-MAP]({{site.baseurl}}{{ site.baseimg }}/assets/Sql-Map.png)
+![SQL-MAP]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/Sql-Map.png)
 
 When prompted to include all tests for ‘MySQL’ respond with ‘Y’, as well as all other prompts that follows.
 
-![SQL-MAP-OUTPUT]({{site.baseurl}}{{ site.baseimg }}/assets/sqlmap-output.png)
+![SQL-MAP-OUTPUT]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/sqlmap-output.png)
 
 When asked if you want to crack the password via Dictionary-based attack respond with ‘Y’
 Utilize ‘Custom Dictionary File’ by selecting option ‘2’ with rockyou.txt being the Custom Dictionary File When prompted to use Common Password Suffixes respond with ‘Y’
@@ -73,13 +73,13 @@ ssh -L 10000:localhost:10000 <username>@<ip>
 ~~~
 
 
-![SQL-MAP-OUTPUT]({{site.baseurl}}{{ site.baseimg }}/assets/WBMin-Login.png)
+![SQL-MAP-OUTPUT]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/WBMin-Login.png)
 
 after you have logged in to the page in the above image you will have all the info
 you need to answer the questions in this task.
 
 Reference Image
-![logedinpage]({{site.baseurl}}{{ site.baseimg }}/assets/Login-PageWB.png)
+![logedinpage]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/Login-PageWB.png)
 
 The above image has had the info blured out so you can get the info for your self.
 
@@ -102,19 +102,19 @@ of the CMS from task 5 to see if we can find an exploit for the CMS version
 search *.** <--- (replace the *.** with the version you find)
 ~~~
 
-![search-version]({{site.baseurl}}{{ site.baseimg }}/assets/search-version.png)
+![search-version]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/search-version.png)
 
 
 after you have the exploit set next we need to set options for the exploit
 
 
-![set-options]({{site.baseurl}}{{ site.baseimg }}/assets/set-options.png)
+![set-options]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/set-options.png)
 
 
 Now we can just run the expoit
 
 
-![run-exploit]({{site.baseurl}}{{ site.baseimg }}/assets/run-exploit.png)
+![run-exploit]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/run-exploit.png)
 
 
 Now we can show sessions
@@ -123,7 +123,7 @@ sessions -l
 ~~~
 
 
-![show-sessions]({{site.baseurl}}{{ site.baseimg }}/assets/show-sessions.png)
+![show-sessions]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/show-sessions.png)
 
 
 Next choose the number of the sessions displayed on your console
@@ -134,6 +134,6 @@ sessions -i 1
 
 After your session starts you may end up with just a blinking cursor if so just reference the image below
 
-![session]({{site.baseurl}}{{ site.baseimg }}/assets/session.gif)
+![session]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/session.gif)
 
 now all you have to do is read the root.txt and your all done.

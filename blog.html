@@ -10,6 +10,7 @@ pagination:
 
 
 <section class="list">
+<h1>Tech News</h1>
 	{% if site.posts.size == 0 %}
 		<p class="text-center">Nothing published yet!</p>
 	{% elsif site.pagination.enabled %}
@@ -21,7 +22,7 @@ pagination:
 			{% endif %}
 		{% endfor %}
 
-<h1>Tech News</h1>
+
 
     {% include pagination.html%}
 	{% else %}
@@ -37,6 +38,7 @@ pagination:
 
 
     <section class="list">
+    <h1>Tryhackme Walkthrough</h1>
     	{% if site.posts.size == 0 %}
     		<p class="text-center">Nothing published yet!</p>
     	{% elsif site.pagination.enabled %}
@@ -48,7 +50,7 @@ pagination:
     			{% endif %}
     		{% endfor %}
 
-        <h1>Tryhackme Walkthrough</h1>
+
 
         {% include pagination.html%}
     	{% else %}

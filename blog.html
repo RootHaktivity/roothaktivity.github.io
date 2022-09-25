@@ -12,7 +12,6 @@ pagination:
 </section>
 
 <section class="list">
-
 	{% if site.posts.size == 0 %}
 		<p class="text-center">Nothing published yet!</p>
 	{% elsif site.pagination.enabled %}
@@ -24,12 +23,10 @@ pagination:
 			{% endif %}
 		{% endfor %}
 
-
-
-    {% include pagination.html%}
+		{% include pagination.html%}
 	{% else %}
 		{% for post in site.posts %}
-			{% if post.category == 'Tech' %}
+			{% if post.category == 'blog' %}
 				{% if post.hidden != true %}
 					{% include blog-post.html %}
 				{% endif %}
@@ -42,29 +39,27 @@ pagination:
   <h1>Tryhackme Walkthrough</h1>
 </section>
 
+
 <section class="list">
+	{% if site.posts.size == 0 %}
+		<p class="text-center">Nothing published yet!</p>
+	{% elsif site.pagination.enabled %}
+		{% for post in paginator.posts %}
+			{% if post.category == 'THM' %}
+				{% if post.hidden != true %}
+					{% include blog-post.html %}
+				{% endif %}
+			{% endif %}
+		{% endfor %}
 
-{% if site.posts.size == 0 %}
-  <p class="text-center">Nothing published yet!</p>
-{% elsif site.pagination.enabled %}
-  {% for post in paginator.posts %}
-    {% if post.category == 'THM' %}
-    	{% if post.hidden != true %}
-    		{% include blog-post.html %}
-    	{% endif %}
-    {% endif %}
-  {% endfor %}
-
-
-
-  {% include pagination.html%}
-{% else %}
-  {% for post in site.posts %}
-    {% if post.category == 'THM' %}
-      {% if post.hidden != true %}
-        {% include blog-post.html %}
-      {% endif %}
-    {% endif %}
-  {% endfor %}
-{% endif %}
+		{% include pagination.html%}
+	{% else %}
+		{% for post in site.posts %}
+			{% if post.category == 'blog' %}
+				{% if post.hidden != true %}
+					{% include blog-post.html %}
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+	{% endif %}
 </section>

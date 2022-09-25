@@ -8,7 +8,7 @@ tag:
 - writeup
 - pentest
 - tryhackme
-category: blog
+category: Tryhackme Walkthrough
 author: RootHaktivity
 description: Kenobi Walkthrough Video
 ---

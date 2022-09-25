@@ -40,6 +40,7 @@ pagination:
 
 <section class="title">
   <h1>Tryhackme Walkthrough</h1>
+  {% include blog-post.html %}
 </section>
 
 <section class="list">
@@ -54,4 +55,17 @@ pagination:
     	{% endif %}
     {% endif %}
   {% endfor %}
+
+
+
+  {% include pagination.html%}
+{% else %}
+  {% for post in site.posts %}
+    {% if post.category == 'THM' %}
+      {% if post.hidden != true %}
+        {% include blog-post.html %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 </section>

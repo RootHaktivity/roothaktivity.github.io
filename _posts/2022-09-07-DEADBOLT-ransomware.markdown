@@ -2,7 +2,7 @@
 title: "DeadBolt Ransomware Zero-Day Exploit Attacks QNAP"
 layout: post
 date: 2022-09-07 22:00
-image: /assets/images/
+image: /assets/images/zero-day-exploit-banner.png
 headerImage: true
 tag:
 - zero-day

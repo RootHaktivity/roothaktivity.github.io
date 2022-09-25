@@ -7,13 +7,15 @@ pagination:
   enabled: true
 ---
 
-<h1>Tech News</h1>
+
 
 <section class="list">
 	{% if site.posts.size == 0 %}
 		<p class="text-center">Nothing published yet!</p>
 	{% elsif site.pagination.enabled %}
 		{% for post in paginator.posts %}
+    <h1>Tech News</h1>
+
 			{% if post.category == 'Tech News' %}
 				{% if post.hidden != true %}
 					{% include blog-post.html %}
@@ -33,12 +35,14 @@ pagination:
 	{% endif %}
 </section>
 
-<h1>Tryhackme Walkthrough</h1>
+
     <section class="list">
     	{% if site.posts.size == 0 %}
     		<p class="text-center">Nothing published yet!</p>
     	{% elsif site.pagination.enabled %}
     		{% for post in paginator.posts %}
+        <h1>Tryhackme Walkthrough</h1>
+        
     			{% if post.category == 'Tryhackme Walkthrough' %}
     				{% if post.hidden != true %}
     					{% include blog-post.html %}

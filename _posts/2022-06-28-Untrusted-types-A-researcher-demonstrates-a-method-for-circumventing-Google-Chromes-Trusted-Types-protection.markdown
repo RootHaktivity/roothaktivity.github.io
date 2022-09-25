@@ -2,7 +2,7 @@
 title: "Untrusted types: A researcher demonstrates a method for circumventing Google Chrome's Trusted Types protection. "
 layout: post
 date: 2022-06-28 22:00
-image: /assets/images/
+image: /assets/images/Untrusted-types.png
 headerImage: true
 tag:
 - Cross-Site Scripting

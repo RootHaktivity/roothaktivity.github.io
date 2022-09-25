@@ -2,7 +2,7 @@
 title: "The US has charged four Russian hackers in connection with cyber-attacks on the global energy sector."
 layout: post
 date: 2022-03-26 22:00
-image: /assets/images/
+image: /assets/images/power-lines-banner_0.jpg
 headerImage: true
 tag:
 - Cyber-Attack

@@ -13,7 +13,7 @@ author: RootHaktivity
 description: Game Zone Writeup
 ---
 
-*TASK 2: Obtain access via SQLi
+#### TASK 2: Obtain access via SQLi
 
 ![Login-Page]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/login-page.png)
 
@@ -26,7 +26,7 @@ Now let move on after you get your browser open then you can go to the ip addres
 
 ![SQL-INJECTION]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/SQL-INJECTION.png)
 
-*TASK 3: Using SQLMap
+#### TASK 3: Using SQLMap
 After you login you will be presented with this page
 
 ![Search]({{site.baseurl}}{{ site.baseimg }}/assets/images/GameZone/search.png)
@@ -54,7 +54,7 @@ Utilize ‘Custom Dictionary File’ by selecting option ‘2’ with rockyou.tx
 After running steps in SQLmap you should have all answers in this Task as well as
 Task 4 meaning you don't have to mess with John The Ripper.
 
-*Task 5: Exposing services with reverse SSH tunnels
+#### Task 5: Exposing services with reverse SSH tunnels
 
 Q-#2: We can see that a service running on port 10000 is blocked via a firewall rule from the outside (we can see this from the IPtable list).
 However, Using an SSH Tunnel we can expose the port to us (locally)! From our local machine, run the line in the code box below
@@ -75,7 +75,7 @@ Reference Image
 
 The above image has had the info blured out so you can get the info for your self.
 
-*Task 6
+#### Task 6
 
 Ok so in this task we are going to use Metasploit to get the root flag.
 I had a bit of trouble with getting this to work but found out what the problem was

@@ -18,6 +18,18 @@ pagination:
 			{% endif %}
 		{% endfor %}
 
+    {% include pagination.html%}
+	{% else %}
+		{% for post in site.posts %}
+			{% if post.category == 'Tech News' %}
+				{% if post.hidden != true %}
+					{% include blog-post.html %}
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+</section>
+
     <section class="list">
     	{% if site.posts.size == 0 %}
     		<p class="text-center">Nothing published yet!</p>
@@ -30,14 +42,14 @@ pagination:
     			{% endif %}
     		{% endfor %}
 
-		{% include pagination.html%}
-	{% else %}
-		{% for post in site.posts %}
-			{% if post.category == 'blog' %}
-				{% if post.hidden != true %}
-					{% include blog-post.html %}
-				{% endif %}
-			{% endif %}
-		{% endfor %}
-	{% endif %}
-</section>
+        {% include pagination.html%}
+    	{% else %}
+    		{% for post in site.posts %}
+    			{% if post.category == 'Tryhackme Walkthrough' %}
+    				{% if post.hidden != true %}
+    					{% include blog-post.html %}
+    				{% endif %}
+    			{% endif %}
+    		{% endfor %}
+    	{% endif %}
+    </section>

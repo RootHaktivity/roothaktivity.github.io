@@ -14,14 +14,14 @@ pagination:
 		<p class="text-center">Nothing published yet!</p>
 	{% elsif site.pagination.enabled %}
 		{% for post in paginator.posts %}
-    <h1>Tech News</h1>
-
 			{% if post.category == 'Tech News' %}
 				{% if post.hidden != true %}
 					{% include blog-post.html %}
 				{% endif %}
 			{% endif %}
 		{% endfor %}
+
+<h1>Tech News</h1>
 
     {% include pagination.html%}
 	{% else %}
@@ -41,14 +41,14 @@ pagination:
     		<p class="text-center">Nothing published yet!</p>
     	{% elsif site.pagination.enabled %}
     		{% for post in paginator.posts %}
-        <h1>Tryhackme Walkthrough</h1>
-        
     			{% if post.category == 'Tryhackme Walkthrough' %}
     				{% if post.hidden != true %}
     					{% include blog-post.html %}
     				{% endif %}
     			{% endif %}
     		{% endfor %}
+
+        <h1>Tryhackme Walkthrough</h1>
 
         {% include pagination.html%}
     	{% else %}

@@ -14,7 +14,7 @@ description: Tech News, Hacker New
 ---
 
 
-### About the attack
+#### About the attack
 
 The operators take advantage of the zero-day vulnerability, which allows them to encrypt the content of infected systems.
 
@@ -27,13 +27,13 @@ The ransom note also includes a link to a page that sells technical details abou
 
 Furthermore, the operators are selling the QNAP master decryption key for 50 BTC, which could allow all victims of this ransomware family to decrypt their files.
 
-### QNAP releases security updates
+#### QNAP releases security updates
 
 Twelve hours after DeadBolt began using the zero-day vulnerability in attacks, QNAP released Photo Station security updates.
 
 QTS 5.0.1 needs Photo Station 6.1.2 or later, QTS 5.0.0/4.5.x needs Photo Station 6.0.22 or later, QTS 4.3.6 needs Photo Station 5.7.18 or later, QTS 4.3.3 needs Photo Station 5.4.15 or later, and QTS 4.2.6 needs Photo Station 5.2.14 or later.
 
-### Past attacks
+#### Past attacks
 
 Since January, the DeadBolt ransomware gang has been targeting NAS devices by exploiting zero-day vulnerabilities on internet-connected NAS devices.
 In May and June, threat actors conducted extensive attacks on QNAP devices.

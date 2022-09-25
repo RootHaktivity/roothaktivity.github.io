@@ -5,10 +5,10 @@ date: 2022-06-28 22:00
 image: /assets/images/
 headerImage: true
 tag:
-- Cyber-Attack
-- Russian
-- hackers
-- Energy Companies
+- Cross-Site Scripting
+- Trusted Types
+- Hackers
+- Google Chrome
 category: Tech
 author: RootHaktivity
 description: Tech News, Hacker New

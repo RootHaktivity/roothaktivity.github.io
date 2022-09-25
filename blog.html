@@ -11,11 +11,13 @@ pagination:
 
 <section class="list">
 <h1>Tech News</h1>
+<p>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</P>
+<p></p>
 	{% if site.posts.size == 0 %}
 		<p class="text-center">Nothing published yet!</p>
 	{% elsif site.pagination.enabled %}
 		{% for post in paginator.posts %}
-			{% if post.category == 'Tech News' %}
+			{% if post.category == 'Tech' %}
 				{% if post.hidden != true %}
 					{% include blog-post.html %}
 				{% endif %}
@@ -27,7 +29,7 @@ pagination:
     {% include pagination.html%}
 	{% else %}
 		{% for post in site.posts %}
-			{% if post.category == 'Tech News' %}
+			{% if post.category == 'Tech' %}
 				{% if post.hidden != true %}
 					{% include blog-post.html %}
 				{% endif %}
@@ -37,29 +39,31 @@ pagination:
 </section>
 
 
-    <section class="list">
-    <h1>Tryhackme Walkthrough</h1>
-    	{% if site.posts.size == 0 %}
-    		<p class="text-center">Nothing published yet!</p>
-    	{% elsif site.pagination.enabled %}
-    		{% for post in paginator.posts %}
-    			{% if post.category == 'Tryhackme Walkthrough' %}
-    				{% if post.hidden != true %}
-    					{% include blog-post.html %}
-    				{% endif %}
-    			{% endif %}
-    		{% endfor %}
-
-
-
-        {% include pagination.html%}
-    	{% else %}
-    		{% for post in site.posts %}
-    			{% if post.category == 'Tryhackme Walkthrough' %}
-    				{% if post.hidden != true %}
-    					{% include blog-post.html %}
-    				{% endif %}
-    			{% endif %}
-    		{% endfor %}
+<section class="list">
+<h1>Tryhackme Walkthrough</h1>
+<p>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</P>
+<p></p>
+{% if site.posts.size == 0 %}
+  <p class="text-center">Nothing published yet!</p>
+{% elsif site.pagination.enabled %}
+  {% for post in paginator.posts %}
+    {% if post.category == 'THM' %}
+    	{% if post.hidden != true %}
+    		{% include blog-post.html %}
     	{% endif %}
-    </section>
+    {% endif %}
+  {% endfor %}
+
+
+
+  {% include pagination.html%}
+{% else %}
+  {% for post in site.posts %}
+    {% if post.category == 'THM' %}
+      {% if post.hidden != true %}
+        {% include blog-post.html %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+</section>

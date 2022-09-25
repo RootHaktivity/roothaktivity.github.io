@@ -8,7 +8,7 @@ tag:
 - writeup
 - pentest
 - tryhackme
-category: Tryhackme Walkthrough
+category: THM
 author: RootHaktivity
 description: Game Zone Writeup
 ---

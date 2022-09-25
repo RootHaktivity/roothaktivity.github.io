@@ -1,7 +1,7 @@
 ---
 title: "DeadBolt Ransomware Zero-Day Exploit Attacks QNAP"
 layout: post
-date: 2020-08-14 22:00
+date: 2022-09-07 22:00
 image: /assets/images/
 headerImage: true
 tag:
@@ -10,7 +10,7 @@ tag:
 - QNAP
 category: Tech
 author: RootHaktivity
-description: Tech News, Hacker News
+description: Tech News, Hacker New
 ---
 
 

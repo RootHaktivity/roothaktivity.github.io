@@ -2,7 +2,7 @@
 title: "Navigating the Current Landscape of Cybersecurity Threats: A Comprehensive Overview"
 layout: post
 date: 2024-04-09 13:54
-image: /assets/images/zero-day-exploit-banner.png
+image: /assets/images/evablogcover.jpg
 headerImage: true
 tag:
 - zero-day

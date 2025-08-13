@@ -29,19 +29,28 @@
     > .item
         display: block
         width: 95%
-        margin: 0 auto
+        margin: 12px auto
+        padding: 16px 20px
+        background: $omega
+        border: 1px solid $epsilon
+        border-radius: 12px
+        transition: transform .15s ease, box-shadow .15s ease
+
+    > .item:hover
+        transform: translateY(-2px)
+        box-shadow: 0 6px 18px rgba(0,0,0,0.06)
 
     > .item > .url
         width: 100%
         display: block
-        padding: 20px 0
+        padding: 0
         text-decoration: none
 
     > .item > .url > .title
         margin: 0
         width: 75%
-        font-weight: 500
-        transition: all ease-in-out .2s
+        font-weight: 600
+        transition: color ease-in-out .2s
 
     > .item:hover > .url > .title
         color: $delta
@@ -57,7 +66,7 @@
         font-weight: 300
         color: $gama
         text-align: right
-        transition: all ease-in-out .2s
+        transition: color ease-in-out .2s
 
     .item:hover .url aside
         color: $alpha
@@ -72,3 +81,24 @@
         position: relative
         top: -4px
         margin-right: 10px
+
+// Responsive grid layout for lists
+.home > .list,
+.blog > .list,
+.projects > .list
+    display: grid
+    grid-template-columns: 1fr
+    grid-gap: 18px
+
+@media #{$above}
+    .home > .list,
+    .blog > .list,
+    .projects > .list
+        grid-template-columns: 1fr 1fr
+
+// Ensure items fit the grid nicely
+.home > .list > .item,
+.blog > .list > .item,
+.projects > .list > .item
+    width: auto
+    margin: 0

@@ -41,7 +41,7 @@ body {
 .content { max-width: 1000px; margin: 0 auto; padding: 24px; }
 
 /* Hero */
-.hero { position: relative; padding: 120px 24px 80px; text-align: center; overflow: hidden; }
+.hero { position: relative; padding: 120px 24px 80px; text-align: center; overflow: visible; }
 .hero-inner { max-width: 1100px; margin: 0 auto; }
 .hero-logo { width: clamp(88px, 18vw, 160px); height: auto; display: block; margin: 0 auto 10px; border-radius: 50%; box-shadow: var(--glow); border: 2px solid rgba(255,255,255,.08); }
 .hero-title { font-size: clamp(48px, 9vw, 120px); font-weight: 800; letter-spacing: -1px; color: #74fff4; text-shadow: 0 0 2px #0ff, 0 0 22px rgba(37,244,238,.65), 0 0 60px rgba(255,78,205,.35); margin: 0 0 12px; }
@@ -79,10 +79,11 @@ body {
 .post-content pre { background: #0e0f14; border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 12px; overflow: auto; }
 
 /* Hacker ethos section */
-.hacker-ethos { margin: 36px auto 0; max-width: 850px; text-align: left; background: rgba(15,17,26,.55); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 18px 20px; }
-.hacker-ethos h2 { margin: 0 0 8px; font-size: 28px; color: #9bffe9; }
-.hacker-ethos p { margin: 10px 0; }
-.hacker-ethos blockquote { margin: 14px 0; padding: 10px 14px; border-left: 3px solid var(--accent); background: rgba(255,78,205,.08); border-radius: 8px; color: #ffd7f3; }
+.hacker-ethos { margin: 40px auto 0; max-width: 900px; text-align: left; background: rgba(15,17,26,.55); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 22px 24px; }
+.hacker-ethos h2 { margin: 0 0 12px; font-size: 30px; color: #9bffe9; }
+.hacker-ethos p { margin: 12px 0; font-size: 18px; line-height: 1.75; color: #e9f3ff; }
+.hacker-ethos p + p { margin-top: 14px; }
+.hacker-ethos blockquote { margin: 16px 0; padding: 12px 16px; border-left: 3px solid var(--accent); background: rgba(255,78,205,.08); border-radius: 8px; color: #ffd7f3; }
 
 /* About avatar */
 .about-avatar { width: clamp(96px, 18vw, 160px); height: auto; display: block; margin: 6px auto 12px; border-radius: 50%; box-shadow: var(--glow); border: 2px solid rgba(255,255,255,.08); }

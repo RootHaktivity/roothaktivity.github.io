@@ -260,3 +260,45 @@ a:hover
 .nav-home .list .item .link:focus
 	box-shadow: 0 0 0 2px rgba(255,68,230,0.25)
 	border-radius: 8px 
+
+// Stronger neon visibility overrides
+
+// Titles: ensure gradient shows in all browsers
+.header-home .title,
+.post .title,
+.page .title
+	-webkit-text-fill-color: transparent
+
+// Glassy neon nav on non-home pages
+.nav
+	background: linear-gradient(180deg, rgba(255,68,230,0.08), rgba(179,102,255,0.06))
+	border: 1px solid rgba(255,68,230,0.18)
+	box-shadow: 0 0 0 1px rgba(255,68,230,0.08) inset, 0 8px 30px rgba(255,68,230,0.12)
+
+	> .list > .item > .link
+		color: $beta
+
+	> .list > .item > .link:hover
+		color: $delta
+		text-shadow: 0 0 6px rgba(255,68,230,0.6)
+
+// Glassy neon nav on home
+.nav-home > .list
+	background: linear-gradient(180deg, rgba(255,68,230,0.06), rgba(179,102,255,0.05))
+	border: 1px solid rgba(255,68,230,0.16)
+	box-shadow: 0 0 0 1px rgba(255,68,230,0.06) inset, 0 8px 28px rgba(255,68,230,0.10)
+
+// Content cards more visible on dark background
+.page,
+.post
+	background: rgba(255,255,255,0.02)
+	border: 1px solid rgba(255,68,230,0.14)
+	box-shadow: 0 14px 38px rgba(0,0,0,0.35), 0 0 24px rgba(255,68,230,0.06)
+
+// Header avatar subtle neon ring
+.header-home .selfie
+	box-shadow: 0 0 0 2px rgba(255,68,230,0.25), 0 0 32px rgba(255,68,230,0.25)
+
+// Slightly stronger global grid contrast on dark backgrounds
+body::before
+	background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px) 

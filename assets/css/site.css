@@ -84,5 +84,8 @@ body {
 .hacker-ethos p { margin: 10px 0; }
 .hacker-ethos blockquote { margin: 14px 0; padding: 10px 14px; border-left: 3px solid var(--accent); background: rgba(255,78,205,.08); border-radius: 8px; color: #ffd7f3; }
 
+/* About avatar */
+.about-avatar { width: clamp(96px, 18vw, 160px); height: auto; display: block; margin: 6px auto 12px; border-radius: 50%; box-shadow: var(--glow); border: 2px solid rgba(255,255,255,.08); }
+
 /* Footer */
 .site-footer { text-align: center; padding: 32px; color: var(--muted); } 

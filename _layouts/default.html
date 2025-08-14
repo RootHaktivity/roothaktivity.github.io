@@ -41,7 +41,7 @@ layout: compress
     </style>
 
 </head>
-<body>
+<body class="{{ page.title | downcase }}">
     <div class="wrapper-{% if site.width == "normal" %}normal{% elsif site.width == "large" %}large{% endif %}">
         {% if page.layout == "post" %}
             <div class="post">

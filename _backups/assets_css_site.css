@@ -1,3 +1,4 @@
+/* Backup of assets/css/site.css */
 /* RootHaktivity neon theme */
 :root {
 	--bg: #0a0b10;
@@ -76,12 +77,6 @@ body {
 .post-meta { color: var(--muted); margin-top: 0; }
 .post-content img { max-width: 100%; border-radius: 10px; }
 .post-content pre { background: #0e0f14; border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 12px; overflow: auto; }
-
-/* Hacker ethos section */
-.hacker-ethos { margin: 36px auto 0; max-width: 850px; text-align: left; background: rgba(15,17,26,.55); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 18px 20px; }
-.hacker-ethos h2 { margin: 0 0 8px; font-size: 28px; color: #9bffe9; }
-.hacker-ethos p { margin: 10px 0; }
-.hacker-ethos blockquote { margin: 14px 0; padding: 10px 14px; border-left: 3px solid var(--accent); background: rgba(255,78,205,.08); border-radius: 8px; color: #ffd7f3; }
 
 /* Footer */
 .site-footer { text-align: center; padding: 32px; color: var(--muted); } 

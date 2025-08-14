@@ -19,11 +19,3 @@ permalink: /about/
 	<li>SQL injection</li>
 	<li>OSINT</li>
 </ul>
-
-<h2>Affordable online investigations</h2>
-
-<ul>
-	<li>We charge much less than the competition</li>
-	<li>$10 to find an address, workplace, etc,</li>
-	<li>$50 per dox, $100 for private investigations</li>
-</ul>

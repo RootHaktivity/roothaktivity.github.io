@@ -1,0 +1,16 @@
+---
+title: "THM Kenobi Walkthrough - Video"
+layout: post
+date: 2020-08-21 06:27
+image: /assets/images/
+headerImage: false
+tag:
+- writeup
+- pentest
+- tryhackme
+category: THM
+author: RootHaktivity
+description: Kenobi Walkthrough Video
+---
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4Ep8rTikxFc" title="THM Kenobi Walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

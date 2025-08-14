@@ -1,0 +1,86 @@
+.hero
+	position: relative
+	padding: 80px 0 40px
+	text-align: center
+	isolation: isolate
+
+	// background glow
+	&::before
+		content: ""
+		position: absolute
+		inset: 0
+		background: radial-gradient(60% 50% at 50% 0%, rgba(255,68,230,0.18), transparent 60%),
+			radial-gradient(45% 40% at 15% 20%, rgba(179,102,255,0.15), transparent 70%),
+			radial-gradient(45% 40% at 85% 25%, rgba(255,68,230,0.10), transparent 70%)
+		filter: blur(0.5px)
+		z-index: -1
+
+	.brand
+		display: inline-flex
+		align-items: center
+		gap: 12px
+		margin-bottom: 14px
+
+		.logo
+			width: 42px
+			height: 42px
+			border-radius: 10px
+			box-shadow: 0 0 0 2px rgba(255,68,230,0.25)
+
+		.name
+			font-weight: 700
+			font-size: 2rem
+			letter-spacing: 0.4px
+
+	.title
+		font-size: clamp(3.2rem, 7vw, 6rem)
+		margin: 10px 0 14px
+		background-image: linear-gradient(90deg, #ff44e6, #b366ff)
+		-webkit-background-clip: text
+		background-clip: text
+		color: transparent
+		-webkit-text-fill-color: transparent
+		text-shadow: 0 0 20px rgba(255,68,230,0.12)
+
+	.tagline
+		color: $beta
+		font-size: clamp(1.4rem, 2.2vw, 1.9rem)
+		opacity: .9
+		margin-bottom: 28px
+
+	.cta-row
+		display: inline-flex
+		gap: 16px
+
+	.button
+		display: inline-flex
+		align-items: center
+		justify-content: center
+		padding: 14px 22px
+		border-radius: 14px
+		font-weight: 600
+		text-decoration: none
+		border: 1px solid rgba(255,68,230,0.25)
+		box-shadow: 0 10px 30px rgba(255,68,230,0.12)
+		transition: transform .15s ease, box-shadow .15s ease
+
+		&:hover
+			transform: translateY(-1px)
+			box-shadow: 0 14px 40px rgba(255,68,230,0.2)
+
+	.button-primary
+		background: linear-gradient(180deg, rgba(255,68,230,0.25), rgba(179,102,255,0.18))
+		color: #fff
+
+	.button-ghost
+		background: transparent
+		color: $beta
+
+@media #{$mobile}
+	.hero
+		padding: 56px 0 28px
+		.cta-row
+			flex-direction: column
+			width: 100%
+			.button
+				width: 100% 

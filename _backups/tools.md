@@ -1,7 +1,6 @@
 ---
 title: Tools
 layout: page
-permalink: /tools/
 ---
 
 {:refdef: style="text-align: center;"}
@@ -86,4 +85,4 @@ computer system vulnerability.
 
 [Read-More](https://www.metasploit.com/)
 
-+============================================+
++============================================+ 

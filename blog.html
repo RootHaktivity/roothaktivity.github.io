@@ -1,0 +1,19 @@
+---
+layout: default
+permalink: /blog/
+title: Blog
+---
+<section class="blog">
+	<h1 class="page-title">Blog</h1>
+	<ul class="post-list">
+		{% for post in site.posts %}
+		<li class="post-card">
+			<a class="post-card-link" href="{{ post.url | relative_url }}">
+				<h2 class="post-card-title">{{ post.title }}</h2>
+				<p class="post-card-meta">{{ post.date | date: "%b %d, %Y" }} · {{ post.category }}</p>
+				<p class="post-card-excerpt">{{ post.description | default: post.excerpt | strip_html | truncate: 140 }}</p>
+			</a>
+		</li>
+		{% endfor %}
+	</ul>
+</section> 

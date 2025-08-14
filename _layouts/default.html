@@ -1,0 +1,33 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>{% if page.title %}{{ page.title }} · {% endif %}RootHaktivity</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" />
+</head>
+<body>
+	<header class="site-header">
+		<nav class="nav">
+			<a class="brand" href="{{ '/' | relative_url }}">RootHaktivity</a>
+			<ul class="nav-links">
+				<li><a href="{{ '/blog/' | relative_url }}">Blog</a></li>
+				<li><a href="{{ '/tools/' | relative_url }}">Tools</a></li>
+				<li><a href="{{ '/services/' | relative_url }}">Services</a></li>
+				<li><a class="pill" href="{{ '/about/' | relative_url }}">About</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="content">{{ content }}</main>
+
+	<footer class="site-footer">
+		<p>© {{ "now" | date: "%Y" }} RootHaktivity</p>
+	</footer>
+</body>
+</html> 

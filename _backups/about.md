@@ -1,7 +1,6 @@
 ---
 title: About
 layout: page
-permalink: /about/
 ---
 ![Profile Image]({% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %})
 
@@ -26,4 +25,4 @@ permalink: /about/
 	<li>We charge much less than the competition</li>
 	<li>$10 to find an address, workplace, etc,</li>
 	<li>$50 per dox, $100 for private investigations</li>
-</ul>
+</ul> 

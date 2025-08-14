@@ -61,3 +61,55 @@
 // Larger rounded nav links on home
 .nav-home .list > .item > .link
 	border-radius: 999px
+
+.nav-bar
+	position: fixed
+	top: 16px
+	left: 50%
+	transform: translateX(-50%)
+	z-index: 5
+	display: flex
+	align-items: center
+	gap: 18px
+	padding: 10px 14px
+	background: linear-gradient(180deg, rgba(255,68,230,0.08), rgba(179,102,255,0.06))
+	border: 1px solid rgba(255,68,230,0.18)
+	border-radius: 28px
+	backdrop-filter: blur(8px)
+	box-shadow: 0 10px 34px rgba(255,68,230,0.12)
+
+	.brand
+		display: inline-flex
+		align-items: center
+		gap: 10px
+
+		.logo
+			width: 28px
+			height: 28px
+			border-radius: 8px
+			box-shadow: 0 0 0 1px rgba(255,68,230,0.25)
+
+		.name
+			font-weight: 700
+			letter-spacing: .3px
+
+	.list
+		display: inline-flex
+		gap: 6px
+		margin: 0
+		padding: 0
+		list-style: none
+
+		.item .link
+			display: inline-block
+			padding: 10px 14px
+			border-radius: 999px
+			text-decoration: none
+			font-weight: 600
+
+			&:hover
+				color: $delta
+
+			&.active
+				border: 1px solid rgba(255,68,230,0.35)
+				box-shadow: 0 0 0 1px rgba(255,68,230,0.15) inset, 0 0 24px rgba(255,68,230,0.18)

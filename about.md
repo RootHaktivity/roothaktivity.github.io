@@ -3,7 +3,7 @@ title: About
 layout: page
 permalink: /about/
 ---
-![Profile Image]({% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %})
+![Profile Image]({{ site.picture | relative_url }})
 
 <p>RootHaktivity is a group of two like-minded people who share their knowledge of hash cracking, password cracking, programming (C#, Python, Bash, and so on), network security, Linux, Windows, and other topics. It all started on Yahoo and IRC chat back when being a script kiddy was cool, packet wars were cool, and DDoS attacks like WinNuke and Booters were cool.</p>
 

@@ -19,7 +19,8 @@ It does come preinstalled with most Security Distros.
 
 [Read-More](https://labs.portcullis.co.uk/tools/enum4linux/)
 
-+============================================+
+
+
 
 
 
@@ -38,7 +39,10 @@ These are just some of the examples - there are many more.
 
 [Read-More](https://www.openwall.com/john/pro/linux/)
 
-+============================================+
+
+
+
+
 
 <img class="tool-logo" src="{{ '/assets/images/Tools/hashcat-logo-New.png' | relative_url }}" alt="Hashcat" />
 
@@ -51,7 +55,12 @@ to recover those passwords.
 
 [Read-More](https://github.com/hashcat/hashcat)
 
-+============================================+
+
+
+
+
+
+
 
 <img class="tool-logo" src="{{ '/assets/images/Tools/Burp-Logo-New.png' | relative_url }}" alt="Burp Suite" />
 
@@ -66,7 +75,11 @@ More info here on the [Enterprise Edition](https://portswigger.net/burp/enterpri
 
 [Read-More](https://portswigger.net/burp/communitydownload)
 
-+============================================+
+
+
+
+
+
 
 <img class="tool-logo" src="{{ '/assets/images/Tools/Metasploit-Logo-New.png' | relative_url }}" alt="Metasploit" />
 
@@ -86,4 +99,4 @@ computer system vulnerability.
 
 [Read-More](https://www.metasploit.com/)
 
-+============================================+
+

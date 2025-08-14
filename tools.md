@@ -9,7 +9,7 @@ permalink: /tools/
 {: refdef}
 
 
-![Enum4linux]({{site.baseurl}}{{ site.baseimg }}/assets/images/Tools/E4L-Logo.png)
+<img class="tool-logo" src="{{ '/assets/images/Tools/E4L-Logo-New.png' | relative_url }}" alt="Enum4linux" />
 
 Enum4linux is a tool for enumerating information from Windows and Samba systems.
 very useful during CTF if you're facing a Windows machine, it can help you find
@@ -23,7 +23,7 @@ It does come preinstalled with most Security Distros.
 
 
 
-![John]({{site.baseurl}}{{ site.baseimg }}/assets/images/Tools/JTR-Logo.png)
+<img class="tool-logo" src="{{ '/assets/images/Tools/JTR-Logo-New.png' | relative_url }}" alt="John the Ripper" />
 
 John the Ripper is an Open Source password security auditing and password recovery
 tool available for many operating systems. John the Ripper jumbo supports hundreds
@@ -40,7 +40,7 @@ These are just some of the examples - there are many more.
 
 +============================================+
 
-![Hashcat]({{site.baseurl}}{{ site.baseimg }}/assets/images/Tools/hashcat-logo.png)
+<img class="tool-logo" src="{{ '/assets/images/Tools/hashcat-logo-New.png' | relative_url }}" alt="Hashcat" />
 
 Hashcat is a popular and effective password cracker widely used by both penetration
 testers and sysadmins as well as criminals and spies. Cracking passwords is different
@@ -53,7 +53,7 @@ to recover those passwords.
 
 +============================================+
 
-![Burp]({{site.baseurl}}{{ site.baseimg }}/assets/images/Tools/Burp-Logo.png)
+<img class="tool-logo" src="{{ '/assets/images/Tools/Burp-Logo-New.png' | relative_url }}" alt="Burp Suite" />
 
 
 Feature-limited manual tools for researchers and hobbyists
@@ -68,7 +68,7 @@ More info here on the [Enterprise Edition](https://portswigger.net/burp/enterpri
 
 +============================================+
 
-![Metasploit]({{site.baseurl}}{{ site.baseimg }}/assets/images/Tools/Metasploit-Logo.png)
+<img class="tool-logo" src="{{ '/assets/images/Tools/Metasploit-Logo-New.png' | relative_url }}" alt="Metasploit" />
 
 The Metasploit Project is a computer security project that shows the vulnerabilities
 and aids in Penetration Testing. Penetration Testing is an authorized simulated attack

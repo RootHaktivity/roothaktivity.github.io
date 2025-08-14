@@ -1,6 +1,7 @@
 ---
 title: Tools
 layout: page
+permalink: /tools/
 ---
 
 {:refdef: style="text-align: center;"}

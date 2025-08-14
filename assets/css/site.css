@@ -62,6 +62,9 @@ body {
 .page .page-title { font-size: 40px; margin-top: 12px; }
 .page .page-content img { max-width: 100%; height: auto; }
 
+/* Tool logos */
+.tool-logo { width: 100%; max-width: 340px; aspect-ratio: 16/9; object-fit: cover; object-position: center; display: block; margin: 12px auto 6px; border-radius: 14px; border: 1px solid rgba(255,255,255,.10); box-shadow: 0 4px 30px rgba(255,78,205,.18), 0 10px 50px rgba(184,107,255,.16); background: rgba(18,10,26,.35); }
+
 /* Blog list */
 .post-list { list-style: none; padding: 0; margin: 24px 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 .post-card { background: rgba(15,17,26,0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 16px; }

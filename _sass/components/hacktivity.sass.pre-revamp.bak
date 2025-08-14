@@ -233,30 +233,7 @@ body::after
 // Accessibility: reduce motion
 @media (prefers-reduced-motion: reduce)
 	.header-home .title,
-	.post .title,
+	.post 
+	.title,
 	.page .title
 		animation: none 
-
-// Neon pink/purple gradient title text
-.header-home .title,
-.post .title,
-.page .title
-	background-image: linear-gradient(90deg, #ff44e6, #b366ff)
-	-webkit-background-clip: text
-	background-clip: text
-	color: transparent
-
-// Neon link hover glow (subtle)
-a:hover
-	text-shadow: 0 0 6px rgba(255,68,230,0.55), 0 0 14px rgba(179,102,255,0.35)
-
-// Selection highlight with neon tint
-::selection
-	background: rgba(255,68,230,0.35)
-	color: #fff
-
-// Buttons/links inside nav get subtle neon focus
-.nav .list .item .link:focus,
-.nav-home .list .item .link:focus
-	box-shadow: 0 0 0 2px rgba(255,68,230,0.25)
-	border-radius: 8px 

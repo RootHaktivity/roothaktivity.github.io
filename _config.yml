@@ -1,0 +1,8 @@
+title: RootHaktivity
+url: ""
+baseurl: ""
+# Use a local image file for the About page profile image
+external-image: false
+picture: /assets/images/profile-mask.jpg
+# Existing posts use site.baseimg; keep it blank to maintain current relative paths
+baseimg: "" 

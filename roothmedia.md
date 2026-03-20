@@ -17,7 +17,7 @@ title: Cinema Node
                 <span class="status-dot"></span> CONNECTION: <span id="connection-status">TAILSCALE_REQUIRED</span>
 
             <div class="hero-ctas" style="margin-top: 20px;">
-                <a class="btn btn-outline" href="http://100.115.230.112:8920/" target="_blank">Open in Full Terminal</a>
+                <a class="btn btn-outline" href="http://100.115.230.112:8096/" target="_blank">Open in Full Terminal</a>
             </div>
         </div>
 

@@ -27,7 +27,6 @@ title: Cinema Node
             <p>If the screen above is blank, the secure tunnel is either dormant or your local client is not authorized.</p>
         </section>
     </div>
-</section>
 
 <style>
     .cinema-container {

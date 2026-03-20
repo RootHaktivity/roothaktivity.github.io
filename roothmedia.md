@@ -15,11 +15,6 @@ title: Cinema Node
         <div class="cinema-container">
             <div class="status-bar">
                 <span class="status-dot"></span> CONNECTION: <span id="connection-status">TAILSCALE_REQUIRED</span>
-            </div>
-            
-            <div class="iframe-wrapper">
-                <iframe src="(http://100.115.230.112:8920/)" allowfullscreen></iframe>
-            </div>
 
             <div class="hero-ctas" style="margin-top: 20px;">
                 <a class="btn btn-outline" href="http://100.115.230.112:8920/" target="_blank">Open in Full Terminal</a>

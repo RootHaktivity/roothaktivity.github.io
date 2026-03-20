@@ -18,11 +18,11 @@ title: Cinema Node
             </div>
             
             <div class="iframe-wrapper">
-                <iframe src="(http://100.115.230.112:8096/)" allowfullscreen></iframe>
+                <iframe src="(http://100.115.230.112:8920/)" allowfullscreen></iframe>
             </div>
 
             <div class="hero-ctas" style="margin-top: 20px;">
-                <a class="btn btn-outline" href="http://100.115.230.112:8096/" target="_blank">Open in Full Terminal</a>
+                <a class="btn btn-outline" href="http://100.115.230.112:8920/" target="_blank">Open in Full Terminal</a>
             </div>
         </div>
 

@@ -18,7 +18,7 @@ title: Cinema Node
             </div>
             
             <div class="iframe-wrapper">
-                <iframe src="http://100.x.y.z:8096" allowfullscreen></iframe>
+                <iframe src="(http://100.115.230.112:8096/)" allowfullscreen></iframe>
             </div>
 
             <div class="hero-ctas" style="margin-top: 20px;">

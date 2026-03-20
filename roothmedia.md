@@ -25,6 +25,7 @@ title: Cinema Node
             <h2>Access Protocol</h2>
             <p>This node is hosted on a private Linux instance. To view the uplink, ensure your <strong>Tailscale</strong> node is active and authenticated to the RootHaktivity network.</p>
             <p>If the screen above is blank, the secure tunnel is either dormant or your local client is not authorized.</p>
+            </section>
     </div>
 
 <style>

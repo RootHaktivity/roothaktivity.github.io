@@ -20,7 +20,7 @@ title: Media Node
                 <p class="status-text">UPLINK: <span class="highlight">CONNECTED</span></p>
                 <p class="status-text">ENCRYPTION: <span class="highlight">WIRE GUARD</span></p>
                 <div class="hero-ctas">
-                    <a class="btn btn-primary cinema-btn" href="https://leegion-pc.tailbcf815.ts.net:8920" target="_blank">INITIALIZE_SESSION</a>
+                    <a class="btn btn-primary cinema-btn" href="https://leegion-pc.tailbcf815.ts.net" target="_blank">INITIALIZE_SESSION</a>
                 </div>
             </div>
         </div>

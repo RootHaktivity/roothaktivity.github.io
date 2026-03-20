@@ -1,72 +1,102 @@
 ---
 layout: default
-title: Cinema Node
+title: Media Node
 ---
 
-<section class="hero">
+<section class="hero cinema-node">
     <div class="hero-inner">
-        <h1 class="hero-title">[ CINEMA_NODE ]</h1>
+        <h1 class="cinema-title">[ CINEMA_NODE ]</h1>
         <p class="hero-tagline">Decentralized Media Access • Encrypted Tunnel Active</p>
         
         <p class="hero-terminal">
             <span class="prompt">leegion</span>@<span class="host">roothaktivity</span>:<span class="path">/mnt/media</span>$ ./access_jellyfin.sh
         </p>
 
-        <div class="cinema-container">
-            <div class="status-bar">
-                <span class="status-dot"></span> CONNECTION: <span id="connection-status">TAILSCALE_REQUIRED</span>
-
-            <div class="hero-ctas" style="margin-top: 20px;">
-                <a class="btn btn-outline" href="http://100.115.230.112:8096/" target="_blank">Open in Full Terminal</a>
+        <div class="cinema-status-box">
+            <div class="status-header">
+                <span class="status-dot"></span> SYSTEM_READY
+            </div>
+            <div class="status-content">
+                <p class="status-text">UPLINK: <span class="highlight">CONNECTED</span></p>
+                <p class="status-text">ENCRYPTION: <span class="highlight">WIRE GUARD</span></p>
+                <div class="hero-ctas">
+                    <a class="btn btn-primary" href="https://leegion-pc.tailbcf815.ts.net:8920" target="_blank">INITIALIZE_SESSION</a>
+                </div>
             </div>
         </div>
 
         <section class="hacker-ethos">
             <h2>Access Protocol</h2>
-            <p>This node is hosted on a private Linux instance. To view the uplink, ensure your <strong>Tailscale</strong> node is active and authenticated to the RootHaktivity network.</p>
-            <p>If the screen above is blank, the secure tunnel is either dormant or your local client is not authorized.</p>
-            </section>
+            <p>This node is hosted on a private Linux instance. To view the uplink, ensure your <strong>Tailscale</strong> node is active.</p>
+            <p>Mobile users: Ensure the Tailscale app is connected before initializing the session.</p>
+        </section>
     </div>
+</section>
 
 <style>
-    .cinema-container {
-        margin-top: 30px;
-        border: 1px solid #6a0dad;
-        background: rgba(0, 0, 0, 0.4);
-        padding: 10px;
-        border-radius: 8px;
-        box-shadow: 0 0 15px rgba(106, 13, 173, 0.3);
-    }
-    .status-bar {
-        font-family: monospace;
-        font-size: 0.8rem;
-        color: #00ffff;
+    /* Fixed Title Sizing */
+    .cinema-title {
+        font-size: clamp(1.5rem, 8vw, 3rem) !important;
         margin-bottom: 10px;
+        color: #ff007f;
+        text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+    }
+
+    /* Mobile-Friendly Container */
+    .cinema-status-box {
+        margin: 20px auto;
+        max-width: 500px;
+        width: 90%;
+        border: 1px solid #6a0dad;
+        background: rgba(10, 10, 10, 0.8);
+        border-radius: 4px;
+        overflow: hidden;
         text-align: left;
     }
+
+    .status-header {
+        background: #1a1a1a;
+        padding: 8px 15px;
+        font-family: monospace;
+        font-size: 0.75rem;
+        color: #00ffff;
+        border-bottom: 1px solid #333;
+    }
+
+    .status-content {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .status-text {
+        font-family: monospace;
+        font-size: 0.9rem;
+        margin: 5px 0;
+        color: #ccc;
+    }
+
     .status-dot {
         height: 8px;
         width: 8px;
-        background-color: #ff007f;
+        background-color: #39ff14; /* Green for connected */
         border-radius: 50%;
         display: inline-block;
         margin-right: 5px;
-        box-shadow: 0 0 5px #ff007f;
+        box-shadow: 0 0 8px #39ff14;
     }
-    .iframe-wrapper {
-        position: relative;
-        width: 100%;
-        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-        height: 0;
-        overflow: hidden;
-        border: 1px solid #333;
+
+    .highlight {
+        color: #00ffff;
     }
-    .iframe-wrapper iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
+
+    /* Ensure Hero-Inner doesn't squish on small screens */
+    @media (max-width: 600px) {
+        .hero-inner {
+            padding: 10px;
+        }
+        .hero-terminal {
+            font-size: 0.7rem;
+            word-break: break-all;
+        }
     }
 </style>

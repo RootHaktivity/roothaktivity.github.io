@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home | RootHaktivity</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/css/site.css" />
+</head>
+<body style="margin:0;padding:0;">
+	<!-- Fullscreen purple background texture -->
+	<div class="bg-overlay"></div>
+
+	<!-- Navigation bar -->
+	<nav class="main-nav">
+		<a href="/" class="nav-brand">
+			<img src="/assets/images/Root-HaktivityPurple.png" alt="Logo" style="width: 32px; height: 32px; border-radius: 50%;" />
+			<span>RootHaktivity</span>
+		</a>
+		
+		<!-- Hamburger Icon -->
+		<div class="menu-toggle" id="mobile-menu">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</div>
+
+		<div class="nav-menu-container">
+			<ul class="nav-links">
+				<li><a href="/">HOME</a></li>
+				<li><a href="/about/">ABOUT</a></li>
+				<li><a href="/tools/">TOOLS</a></li>
+				<li><a href="/services/">SERVICES</a></li>
+				<li><a href="/contact/">CONTACT</a></li>
+			</ul>
+			<div class="nav-socials">
+				<a href="https://www.youtube.com/@roothaktivity5053" target="_blank" class="social-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube" /></a>
+				<a href="https://discord.com/invite/yYY57NMdmW" target="_blank" class="social-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg" alt="Discord" /></a>
+			</div>
+		</div>
+	</nav>
+
+	<main style="position:relative;z-index:10;">
+		<!-- HERO SECTION -->
+<div class="hero-container">
+	<!-- Hooded Figure -->
+	<img src="/assets/images/figuer.png" alt="Hacker Figure" class="hero-figure" />
+
+	<!-- Hero Content (Aligned Right) -->
+	<div class="hero-content">
+		<!-- Logo and Title Row -->
+		<div class="hero-header-row">
+			<img src="/assets/images/Root-HaktivityPurple.png" alt="Logo" class="hero-logo-circle" />
+			<h1 class="hero-title">
+				ROOT<span>HAKTIVIY</span>
+			</h1>
+		</div>
+
+		<!-- Tagline -->
+		<div class="hero-tagline">
+			IT IS NOT DATA THAT IS BEING EXPLOITED,<br>
+			IT’S PEOPLE THAT ARE BEING EXPLOITED.
+		</div>
+
+		<!-- The Term Hacker Box -->
+		<div class="content-box">
+			<div class="content-box-header">THE TERM HACKER</div>
+			<div class="content-box-body">
+				Unfortunately, this term has been twisted to have negative connotations, which it did not used to have.<br><br>
+				While the techniques used by hackers may become obsolete, I believe the mindset does not. Hackers look for weaknesses and, depending on their preferences, either exploit or try to fix them. And I believe that the good that hackers do is more important now than ever.<br><br>
+				A good hacker can't just rely on tools. It's a combination of abilities, mindset, and motivation...the tools come second.<br><br>
+				A fool with a tool is still a fool, as any pentester would say. It's all about attitude and perseverance.
+			</div>
+			<!-- Padlock (Anchored to Box) -->
+			<img src="/assets/images/lock.png" alt="Padlock" class="hero-lock" />
+		</div>
+	</div>
+</div> 
+
+	</main>
+
+	<script>
+		const menu = document.querySelector('#mobile-menu');
+		const menuContainer = document.querySelector('.nav-menu-container');
+
+		menu.addEventListener('click', function() {
+			menu.classList.toggle('is-active');
+			menuContainer.classList.toggle('active');
+		});
+	</script>
+</body>
+</html>

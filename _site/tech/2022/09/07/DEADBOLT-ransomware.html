@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DeadBolt Ransomware Zero-Day Exploit Attacks QNAP | RootHaktivity</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/css/site.css" />
+</head>
+<body style="margin:0;padding:0;">
+	<!-- Fullscreen purple background texture -->
+	<div class="bg-overlay"></div>
+
+	<!-- Navigation bar -->
+	<nav class="main-nav">
+		<a href="/" class="nav-brand">
+			<img src="/assets/images/Root-HaktivityPurple.png" alt="Logo" style="width: 32px; height: 32px; border-radius: 50%;" />
+			<span>RootHaktivity</span>
+		</a>
+		
+		<!-- Hamburger Icon -->
+		<div class="menu-toggle" id="mobile-menu">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</div>
+
+		<div class="nav-menu-container">
+			<ul class="nav-links">
+				<li><a href="/">HOME</a></li>
+				<li><a href="/about/">ABOUT</a></li>
+				<li><a href="/tools/">TOOLS</a></li>
+				<li><a href="/services/">SERVICES</a></li>
+				<li><a href="/contact/">CONTACT</a></li>
+			</ul>
+			<div class="nav-socials">
+				<a href="https://www.youtube.com/@roothaktivity5053" target="_blank" class="social-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube" /></a>
+				<a href="https://discord.com/invite/yYY57NMdmW" target="_blank" class="social-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg" alt="Discord" /></a>
+			</div>
+		</div>
+	</nav>
+
+	<main style="position:relative;z-index:10;">
+		<article class="post">
+	
+		<div class="post-hero" style="background-image: url('/assets/images/zero-day-exploit-banner.png');"></div>
+	
+	<header class="post-header">
+		<h1 class="post-title">DeadBolt Ransomware Zero-Day Exploit Attacks QNAP</h1>
+		<p class="post-meta">Sep 07, 2022</p>
+	</header>
+	<section class="post-content">
+		<h4 id="about-the-attack">About the attack</h4>
+
+<p>The operators take advantage of the zero-day vulnerability, which allows them to encrypt the content of infected systems.</p>
+
+<p>After encrypting the device, the ransomware appends an extension to the names of the extracted files and searches the QNAP NAS login page for a warning message.</p>
+
+<p>A ransom note appears on the hijacked QNAP login screen, demanding a payment of approximately $1,277 in order to receive a decryption key to recover the files.</p>
+
+<p>The ransom note also includes a link to a page that sells technical details about the alleged zero-day vulnerability in QNAP NAS devices for around $212,000.</p>
+
+<p>Furthermore, the operators are selling the QNAP master decryption key for 50 BTC, which could allow all victims of this ransomware family to decrypt their files.</p>
+
+<h4 id="qnap-releases-security-updates">QNAP releases security updates</h4>
+
+<p>Twelve hours after DeadBolt began using the zero-day vulnerability in attacks, QNAP released Photo Station security updates.</p>
+
+<p>QTS 5.0.1 needs Photo Station 6.1.2 or later, QTS 5.0.0/4.5.x needs Photo Station 6.0.22 or later, QTS 4.3.6 needs Photo Station 5.7.18 or later, QTS 4.3.3 needs Photo Station 5.4.15 or later, and QTS 4.2.6 needs Photo Station 5.2.14 or later.</p>
+
+<h4 id="past-attacks">Past attacks</h4>
+
+<p>Since January, the DeadBolt ransomware gang has been targeting NAS devices by exploiting zero-day vulnerabilities on internet-connected NAS devices.
+In May and June, threat actors conducted extensive attacks on QNAP devices.</p>
+
+<p>What should I do?</p>
+
+<p>The company strongly advises users to place their QNAP NAS behind a firewall rather than directly expose it to the internet.
+Users are also advised to enable the VPN service or use QNAP’s myQNAPcloud Link feature to effectively fortify the devices and reduce the likelihood of being attacked.</p>
+
+	</section>
+</article> 
+	</main>
+
+	<script>
+		const menu = document.querySelector('#mobile-menu');
+		const menuContainer = document.querySelector('.nav-menu-container');
+
+		menu.addEventListener('click', function() {
+			menu.classList.toggle('is-active');
+			menuContainer.classList.toggle('active');
+		});
+	</script>
+</body>
+</html>

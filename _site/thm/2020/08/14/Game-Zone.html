@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>THM Game Zone Writeup | RootHaktivity</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/css/site.css" />
+</head>
+<body style="margin:0;padding:0;">
+	<!-- Fullscreen purple background texture -->
+	<div class="bg-overlay"></div>
+
+	<!-- Navigation bar -->
+	<nav class="main-nav">
+		<a href="/" class="nav-brand">
+			<img src="/assets/images/Root-HaktivityPurple.png" alt="Logo" style="width: 32px; height: 32px; border-radius: 50%;" />
+			<span>RootHaktivity</span>
+		</a>
+		
+		<!-- Hamburger Icon -->
+		<div class="menu-toggle" id="mobile-menu">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</div>
+
+		<div class="nav-menu-container">
+			<ul class="nav-links">
+				<li><a href="/">HOME</a></li>
+				<li><a href="/about/">ABOUT</a></li>
+				<li><a href="/tools/">TOOLS</a></li>
+				<li><a href="/services/">SERVICES</a></li>
+				<li><a href="/contact/">CONTACT</a></li>
+			</ul>
+			<div class="nav-socials">
+				<a href="https://www.youtube.com/@roothaktivity5053" target="_blank" class="social-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube" /></a>
+				<a href="https://discord.com/invite/yYY57NMdmW" target="_blank" class="social-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg" alt="Discord" /></a>
+			</div>
+		</div>
+	</nav>
+
+	<main style="position:relative;z-index:10;">
+		<article class="post">
+	
+		<div class="post-hero" style="background-image: url('/assets/images/GameZone/Gamer-Zone-Banner.png');"></div>
+	
+	<header class="post-header">
+		<h1 class="post-title">THM Game Zone Writeup</h1>
+		<p class="post-meta">Aug 14, 2020</p>
+	</header>
+	<section class="post-content">
+		<h4 id="task-2-obtain-access-via-sqli">TASK 2: Obtain access via SQLi</h4>
+
+<p><img src="/assets/images/GameZone/login-page.png" alt="Login-Page" /></p>
+
+<p>Ok so on this task we need to open your browser, I am using firefox and that is because you can get <a href="https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/">‘FoxyProxy’</a> which will let you change your proxy settings faster
+Now let move on after you get your browser open then you can go to the ip address of the deployed site it will load a site after the site is loaded your going to want to log in with an SQL INJECTION. (see code box below)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>' or 1=1-- -
+</code></pre></div></div>
+
+<p><img src="/assets/images/GameZone/SQL-INJECTION.png" alt="SQL-INJECTION" /></p>
+
+<h4 id="task-3-using-sqlmap">TASK 3: Using SQLMap</h4>
+<p>After you login you will be presented with this page</p>
+
+<p><img src="/assets/images/GameZone/search.png" alt="Search" /></p>
+
+<p>on this page we need to intercept the search query and this is how we are going to do that</p>
+
+<p>Set your browser to use burp suite as a proxy either on Chrome, Firefox, etc. (this is where <a href="https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/">‘FoxyProxy’</a>) will come in handy) which will allow you to intercept the ‘search’ function. From this point we will copy what was intercepted from Burp Suite to a new text document.
+Open Terminal. run SQLmap against the text document that was created</p>
+
+<p><img src="/assets/images/GameZone/burp-i.png" alt="Burp" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sqlmap -r Text-Document.txt --dbms=mysql --dump
+</code></pre></div></div>
+
+<p><img src="/assets/images/GameZone/Sql-Map.png" alt="SQL-MAP" /></p>
+
+<p>When prompted to include all tests for ‘MySQL’ respond with ‘Y’, as well as all other prompts that follows.</p>
+
+<p><img src="/assets/images/GameZone/sqlmap-output.png" alt="SQL-MAP-OUTPUT" /></p>
+
+<p>When asked if you want to crack the password via Dictionary-based attack respond with ‘Y’
+Utilize ‘Custom Dictionary File’ by selecting option ‘2’ with rockyou.txt being the Custom Dictionary File When prompted to use Common Password Suffixes respond with ‘Y’</p>
+
+<p>After running steps in SQLmap you should have all answers in this Task as well as
+Task 4 meaning you don’t have to mess with John The Ripper.</p>
+
+<h4 id="task-5-exposing-services-with-reverse-ssh-tunnels">Task 5: Exposing services with reverse SSH tunnels</h4>
+
+<p>Q-#2: We can see that a service running on port 10000 is blocked via a firewall rule from the outside (we can see this from the IPtable list).
+However, Using an SSH Tunnel we can expose the port to us (locally)! From our local machine, run the line in the code box below
+Once complete, in your browser type “localhost:10000” and you can access the newly-exposed webserver.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh -L 10000:localhost:10000 &lt;username&gt;@&lt;ip&gt;
+</code></pre></div></div>
+
+<p><img src="/assets/images/GameZone/WBMin-Login.png" alt="SQL-MAP-OUTPUT" /></p>
+
+<p>after you have logged in to the page in the above image you will have all the info
+you need to answer the questions in this task.</p>
+
+<p>Reference Image
+<img src="/assets/images/GameZone/Login-PageWB.png" alt="logedinpage" /></p>
+
+<p>The above image has had the info blured out so you can get the info for your self.</p>
+
+<h4 id="task-6">Task 6</h4>
+
+<p>Ok so in this task we are going to use Metasploit to get the root flag.
+I had a bit of trouble with getting this to work but found out what the problem was
+so lets get started.</p>
+
+<p>Frist lets go ahead and start Metasploit</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo msfconsole
+</code></pre></div></div>
+
+<p>After you have Metasploit running we are going to use search to find the version
+of the CMS from task 5 to see if we can find an exploit for the CMS version</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>search *.** &lt;--- (replace the *.** with the version you find)
+</code></pre></div></div>
+
+<p><img src="/assets/images/GameZone/search-version.png" alt="search-version" /></p>
+
+<p>after you have the exploit set next we need to set options for the exploit</p>
+
+<p><img src="/assets/images/GameZone/set-options.png" alt="set-options" /></p>
+
+<p>Now we can just run the expoit</p>
+
+<p><img src="/assets/images/GameZone/run-exploit.png" alt="run-exploit" /></p>
+
+<p>Now we can show sessions</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sessions -l
+</code></pre></div></div>
+
+<p><img src="/assets/images/GameZone/show-sessions.png" alt="show-sessions" /></p>
+
+<p>Next choose the number of the sessions displayed on your console</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sessions -i 1
+</code></pre></div></div>
+
+<p>After your session starts you may end up with just a blinking cursor if so just reference the image below</p>
+
+<p><img src="/assets/images/GameZone/session.gif" alt="session" /></p>
+
+<p>now all you have to do is read the root.txt and your all done.</p>
+
+	</section>
+</article> 
+	</main>
+
+	<script>
+		const menu = document.querySelector('#mobile-menu');
+		const menuContainer = document.querySelector('.nav-menu-container');
+
+		menu.addEventListener('click', function() {
+			menu.classList.toggle('is-active');
+			menuContainer.classList.toggle('active');
+		});
+	</script>
+</body>
+</html>

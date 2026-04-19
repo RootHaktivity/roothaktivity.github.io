@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Blog | RootHaktivity</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/css/site.css" />
+</head>
+<body style="margin:0;padding:0;">
+	<!-- Fullscreen purple background texture -->
+	<div class="bg-overlay"></div>
+
+	<!-- Navigation bar -->
+	<nav class="main-nav">
+		<a href="/" class="nav-brand">
+			<img src="/assets/images/Root-HaktivityPurple.png" alt="Logo" style="width: 32px; height: 32px; border-radius: 50%;" />
+			<span>RootHaktivity</span>
+		</a>
+		
+		<!-- Hamburger Icon -->
+		<div class="menu-toggle" id="mobile-menu">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</div>
+
+		<div class="nav-menu-container">
+			<ul class="nav-links">
+				<li><a href="/">HOME</a></li>
+				<li><a href="/about/">ABOUT</a></li>
+				<li><a href="/tools/">TOOLS</a></li>
+				<li><a href="/services/">SERVICES</a></li>
+				<li><a href="/contact/">CONTACT</a></li>
+			</ul>
+			<div class="nav-socials">
+				<a href="https://www.youtube.com/@roothaktivity5053" target="_blank" class="social-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube" /></a>
+				<a href="https://discord.com/invite/yYY57NMdmW" target="_blank" class="social-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg" alt="Discord" /></a>
+			</div>
+		</div>
+	</nav>
+
+	<main style="position:relative;z-index:10;">
+		<section class="blog">
+	<h1 class="page-title">Blog</h1>
+	<ul class="post-list">
+		
+		<li class="post-card">
+			<a class="post-card-link" href="/tech/2024/04/09/Securing-Your-Digital-Fortress.html">
+				<h2 class="post-card-title">Securing Your Digital Fortress: Navigating the Ever-Evolving Threat Landscape</h2>
+				<p class="post-card-meta">Apr 09, 2024 · Tech</p>
+				<p class="post-card-excerpt">Tech News, Hacker News</p>
+			</a>
+		</li>
+		
+		<li class="post-card">
+			<a class="post-card-link" href="/tech/2024/04/09/CyberSecurity-Threats.html">
+				<h2 class="post-card-title">Navigating the Current Landscape of Cybersecurity Threats: A Comprehensive Overview</h2>
+				<p class="post-card-meta">Apr 09, 2024 · Tech</p>
+				<p class="post-card-excerpt">Tech News, Hacker New</p>
+			</a>
+		</li>
+		
+		<li class="post-card">
+			<a class="post-card-link" href="/tech/2022/09/07/DEADBOLT-ransomware.html">
+				<h2 class="post-card-title">DeadBolt Ransomware Zero-Day Exploit Attacks QNAP</h2>
+				<p class="post-card-meta">Sep 07, 2022 · Tech</p>
+				<p class="post-card-excerpt">Tech News, Hacker New</p>
+			</a>
+		</li>
+		
+		<li class="post-card">
+			<a class="post-card-link" href="/tech/2022/06/28/Untrusted-types-A-researcher-demonstrates-a-method-for-circumventing-Google-Chromes-Trusted-Types-protection.html">
+				<h2 class="post-card-title">Untrusted types: A researcher demonstrates a method for circumventing Google Chrome's Trusted Types protection. </h2>
+				<p class="post-card-meta">Jun 28, 2022 · Tech</p>
+				<p class="post-card-excerpt">Tech News, Hacker New</p>
+			</a>
+		</li>
+		
+		<li class="post-card">
+			<a class="post-card-link" href="/tech/2022/03/26/The-US-has-charged-four-Russian.html">
+				<h2 class="post-card-title">The US has charged four Russian hackers in connection with cyber-attacks on the global energy sector.</h2>
+				<p class="post-card-meta">Mar 26, 2022 · Tech</p>
+				<p class="post-card-excerpt">Tech News, Hacker New</p>
+			</a>
+		</li>
+		
+		<li class="post-card">
+			<a class="post-card-link" href="/thm/2020/08/21/Kenobi.html">
+				<h2 class="post-card-title">THM Kenobi Walkthrough - Video</h2>
+				<p class="post-card-meta">Aug 21, 2020 · THM</p>
+				<p class="post-card-excerpt">Kenobi Walkthrough Video</p>
+			</a>
+		</li>
+		
+		<li class="post-card">
+			<a class="post-card-link" href="/thm/2020/08/14/Game-Zone.html">
+				<h2 class="post-card-title">THM Game Zone Writeup</h2>
+				<p class="post-card-meta">Aug 14, 2020 · THM</p>
+				<p class="post-card-excerpt">Game Zone Writeup</p>
+			</a>
+		</li>
+		
+	</ul>
+</section> 
+	</main>
+
+	<script>
+		const menu = document.querySelector('#mobile-menu');
+		const menuContainer = document.querySelector('.nav-menu-container');
+
+		menu.addEventListener('click', function() {
+			menu.classList.toggle('is-active');
+			menuContainer.classList.toggle('active');
+		});
+	</script>
+</body>
+</html>

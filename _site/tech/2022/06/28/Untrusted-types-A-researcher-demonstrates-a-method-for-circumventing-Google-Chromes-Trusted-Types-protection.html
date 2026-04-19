@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Untrusted types: A researcher demonstrates a method for circumventing Google Chrome's Trusted Types protection.  | RootHaktivity</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/css/site.css" />
+</head>
+<body style="margin:0;padding:0;">
+	<!-- Fullscreen purple background texture -->
+	<div class="bg-overlay"></div>
+
+	<!-- Navigation bar -->
+	<nav class="main-nav">
+		<a href="/" class="nav-brand">
+			<img src="/assets/images/Root-HaktivityPurple.png" alt="Logo" style="width: 32px; height: 32px; border-radius: 50%;" />
+			<span>RootHaktivity</span>
+		</a>
+		
+		<!-- Hamburger Icon -->
+		<div class="menu-toggle" id="mobile-menu">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</div>
+
+		<div class="nav-menu-container">
+			<ul class="nav-links">
+				<li><a href="/">HOME</a></li>
+				<li><a href="/about/">ABOUT</a></li>
+				<li><a href="/tools/">TOOLS</a></li>
+				<li><a href="/services/">SERVICES</a></li>
+				<li><a href="/contact/">CONTACT</a></li>
+			</ul>
+			<div class="nav-socials">
+				<a href="https://www.youtube.com/@roothaktivity5053" target="_blank" class="social-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube" /></a>
+				<a href="https://discord.com/invite/yYY57NMdmW" target="_blank" class="social-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg" alt="Discord" /></a>
+			</div>
+		</div>
+	</nav>
+
+	<main style="position:relative;z-index:10;">
+		<article class="post">
+	
+		<div class="post-hero" style="background-image: url('/assets/images/Untrusted-types.png');"></div>
+	
+	<header class="post-header">
+		<h1 class="post-title">Untrusted types: A researcher demonstrates a method for circumventing Google Chrome's Trusted Types protection. </h1>
+		<p class="post-meta">Jun 28, 2022</p>
+	</header>
+	<section class="post-content">
+		<p>In some scenarios, security researchers discovered multiple unprotected properties that could be used to circumvent Trusted Types, a widely used web security mechanism.</p>
+
+<p>Trusted Types is an important technology that allows websites to define strict rules for dealing with various DOM (Document Object Model) properties, which is a useful technique for preventing DOM-based cross-site scripting (XSS) attacks.</p>
+
+<p>Masato Kinugawa discovered a bypass that uses attribute properties to circumvent the protection that Trusted Types would normally provide.</p>
+
+<p>Kinugawa discovered that if a site used these properties and was vulnerable to DOM XSS, Trusted Types would not protect it.
+If a site changed an existing attribute value using nodeValue/textContent, as explained in a post on a Chrome security mailing list, Trusted Types would completely disregard the assignment.</p>
+
+<p>The flaw was discovered in Chrome v100.0.4892.0 (Official Build) canary (64-bit).
+Other Chrome and browser versions may be vulnerable, but this has not been tested.</p>
+
+<p>Chrome’s most recent releases address the issue.</p>
+
+<p>The vulnerability, identified as CVE-2022-1494 and involving “insufficient data validation in Trusted Types,” was first reported on February 16, but details were only made public last week.</p>
+
+<p>The Daily Swig sought comment from Kinugawa and Krzysztof Kotowicz, the Google software engineer who created Trusted Types.
+There has been no response as of yet, but we will update this story as more information becomes available.</p>
+
+	</section>
+</article> 
+	</main>
+
+	<script>
+		const menu = document.querySelector('#mobile-menu');
+		const menuContainer = document.querySelector('.nav-menu-container');
+
+		menu.addEventListener('click', function() {
+			menu.classList.toggle('is-active');
+			menuContainer.classList.toggle('active');
+		});
+	</script>
+</body>
+</html>

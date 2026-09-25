@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>RootHaktivity Radio</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .radio-page {
+      max-width: 900px;
+      margin: 100px auto;
+      padding: 30px;
+    }
+
+    .radio-player {
+      background: var(--surface);
+      border: 2px solid var(--primary);
+      padding: 28px;
+      box-shadow: var(--glow-pink);
+      font-family: 'Space Mono', monospace;
+    }
+
+    .radio-player-header {
+      color: var(--accent);
+      border-bottom: 1px solid var(--primary);
+      padding-bottom: 15px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    .radio-player h1 {
+      color: var(--primary);
+      text-shadow: var(--glow-pink);
+      margin: 25px 0 5px;
+    }
+
+    .radio-player p {
+      color: var(--muted);
+    }
+
+    .radio-controls {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .radio-button {
+      border: 2px solid var(--accent);
+      background: var(--accent);
+      color: #000;
+      padding: 14px 22px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 900;
+      letter-spacing: 1px;
+      box-shadow: var(--glow-green);
+    }
+
+    .radio-button:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+      box-shadow: var(--glow-pink);
+    }
+
+    .radio-status {
+      color: var(--muted);
+      font-size: 0.85em;
+      letter-spacing: 1px;
+    }
+
+    .radio-volume {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid var(--primary);
+      color: var(--muted);
+    }
+
+    .radio-volume input {
+      accent-color: var(--accent);
+    }
+
+    @media (max-width: 600px) {
+      .radio-page {
+        margin: 90px 15px 30px;
+        padding: 10px;
+      }
+
+      .radio-player {
+        padding: 20px;
+      }
+
+      .radio-button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-overlay"></div>
+
+  <nav class="main-nav">
+    <a class="nav-brand" href="index.html">ROOTHAKTIVITY</a>
+
+    <div class="nav-menu-container">
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="tools.html">TOOLS</a></li>
+        <li><a href="services.html">SERVICES</a></li>
+        <li><a href="radio.html">RADIO</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="radio-page">
+    <section class="radio-player">
+      <div class="radio-player-header">
+        ROOTHAKTIVITY // LIVE TRANSMISSION
+      </div>
+
+      <h1>RootHaktivity Radio</h1>
+      <p>Independent signal // no unnecessary noise</p>
+
+      <div class="radio-controls">
+        <button id="radio-toggle" class="radio-button" type="button">
+          ▶ PLAY STREAM
+        </button>
+
+        <span id="radio-status" class="radio-status">
+          STANDBY
+        </span>
+      </div>
+
+      <label class="radio-volume">
+        VOLUME
+        <input id="radio-volume" type="range" min="0" max="1" step="0.01" value="0.8">
+      </label>
+
+      <audio id="radio-audio" preload="none">
+        <source src="http://sl4.streamhood.net:8100" type="audio/mpeg">
+      </audio>
+    </section>
+  </main>
+
+  <script>
+    const audio = document.getElementById('radio-audio');
+    const toggle = document.getElementById('radio-toggle');
+    const status = document.getElementById('radio-status');
+    const volume = document.getElementById('radio-volume');
+
+    audio.volume = volume.value;
+
+    volume.addEventListener('input', function () {
+      audio.volume = this.value;
+    });
+
+    toggle.addEventListener('click', async function () {
+      if (audio.paused) {
+        try {
+          await audio.play();
+
+          toggle.textContent = 'Ⅱ PAUSE STREAM';
+          status.textContent = 'ON AIR';
+          status.style.color = '#39ff14';
+        } catch (error) {
+          status.textContent = 'STREAM BLOCKED OR UNAVAILABLE';
+          status.style.color = '#d13fc6';
+        }
+      } else {
+        audio.pause();
+
+        toggle.textContent = '▶ PLAY STREAM';
+        status.textContent = 'PAUSED';
+        status.style.color = '#c7b6d9';
+      }
+    });
+
+    audio.addEventListener('error', function () {
+      status.textContent = 'STREAM ERROR';
+      status.style.color = '#d13fc6';
+    });
+  </script>
+</body>
+</html>

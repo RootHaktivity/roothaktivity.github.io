@@ -2,387 +2,367 @@
 layout: default
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .radio-page {
+    max-width: 900px;
+    margin: 100px auto;
+    padding: 30px;
+  }
 
-  <title>RootHaktivity Radio</title>
+  .radio-player {
+    background: var(--surface);
+    border: 2px solid var(--primary);
+    padding: 28px;
+    box-shadow: var(--glow-pink);
+    font-family: 'Space Mono', monospace;
+  }
 
-  <link rel="stylesheet" href="css/style.css">
+  .radio-player-header {
+    color: var(--accent);
+    border-bottom: 1px solid var(--primary);
+    padding-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+  }
 
-  <style>
+  .radio-player h1 {
+    color: var(--primary);
+    text-shadow: var(--glow-pink);
+    margin: 25px 0 5px;
+  }
+
+  .radio-player p {
+    color: var(--muted);
+  }
+
+  .radio-controls {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+  }
+
+  .radio-button {
+    border: 2px solid var(--accent);
+    background: var(--accent);
+    color: #000;
+    padding: 14px 22px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 900;
+    letter-spacing: 1px;
+    box-shadow: var(--glow-green);
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .radio-button:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+    box-shadow: var(--glow-pink);
+  }
+
+  .radio-status {
+    color: var(--muted);
+    font-size: 0.85em;
+    letter-spacing: 1px;
+  }
+
+  #radio-direct {
+    display: none;
+  }
+
+  .radio-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 25px;
+  }
+
+  .radio-badge {
+    font-size: 0.8em;
+    font-weight: 900;
+    letter-spacing: 2px;
+    animation: badge-pulse 2s infinite;
+  }
+
+  @keyframes badge-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .radio-badge { animation: none; }
+  }
+
+  .radio-listeners {
+    color: var(--muted);
+    font-size: 0.8em;
+    letter-spacing: 1px;
+  }
+
+  .radio-now {
+    display: none;
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid var(--primary);
+  }
+
+  .radio-label {
+    color: var(--muted);
+    font-size: 0.75em;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  #radio-song {
+    color: var(--text);
+    font-weight: 700;
+    font-size: 1.05em;
+  }
+
+  .radio-history {
+    display: none;
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid var(--primary);
+  }
+
+  .radio-history ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .radio-history li {
+    display: flex;
+    gap: 14px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(209, 63, 198, 0.25);
+    font-size: 0.85em;
+  }
+
+  .history-time {
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .history-title {
+    color: var(--text);
+  }
+
+  .radio-volume {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--primary);
+    color: var(--muted);
+  }
+
+  .radio-volume input {
+    accent-color: var(--accent);
+  }
+
+  @media (max-width: 600px) {
     .radio-page {
-      max-width: 900px;
-      margin: 100px auto;
-      padding: 30px;
+      margin: 90px 15px 30px;
+      padding: 10px;
     }
 
     .radio-player {
-      background: var(--surface);
-      border: 2px solid var(--primary);
-      padding: 28px;
-      box-shadow: var(--glow-pink);
-      font-family: 'Space Mono', monospace;
-    }
-
-    .radio-player-header {
-      color: var(--accent);
-      border-bottom: 1px solid var(--primary);
-      padding-bottom: 15px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-    }
-
-    .radio-player h1 {
-      color: var(--primary);
-      text-shadow: var(--glow-pink);
-      margin: 25px 0 5px;
-    }
-
-    .radio-player p {
-      color: var(--muted);
-    }
-
-    .radio-controls {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-top: 25px;
+      padding: 20px;
     }
 
     .radio-button {
-      border: 2px solid var(--accent);
-      background: var(--accent);
-      color: #000;
-      padding: 14px 22px;
-      cursor: pointer;
-      font-family: inherit;
-      font-weight: 900;
-      letter-spacing: 1px;
-      box-shadow: var(--glow-green);
-      text-decoration: none;
-      text-align: center;
+      width: 100%;
     }
+  }
+</style>
 
-    .radio-button:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #fff;
-      box-shadow: var(--glow-pink);
+<main class="radio-page">
+  <section class="radio-player">
+    <div class="radio-player-header">
+      ROOTHAKTIVITY // LIVE TRANSMISSION
+    </div>
+
+    <h1>RootHaktivity Radio</h1>
+    <p>Independent signal // no unnecessary noise</p>
+
+    <div class="radio-controls">
+      <button id="radio-toggle" class="radio-button" type="button">
+        ▶ PLAY STREAM
+      </button>
+
+      <a id="radio-direct" class="radio-button" type="button"
+         href="http://sl4.streamhood.net:8100/;" target="_blank" rel="noopener">
+        OPEN IN PLAYER
+      </a>
+
+      <span id="radio-status" class="radio-status">
+        STANDBY
+      </span>
+    </div>
+
+    <div class="radio-badge-row">
+      <span id="radio-badge" class="radio-badge" style="color: #c7b6d9;">● CHECKING</span>
+      <span id="radio-listeners" class="radio-listeners"></span>
+    </div>
+
+    <div id="radio-now" class="radio-now">
+      <div class="radio-label">NOW PLAYING</div>
+      <div id="radio-song">—</div>
+    </div>
+
+    <div id="radio-history" class="radio-history">
+      <div class="radio-label">RECENTLY PLAYED</div>
+      <ul id="radio-history-list"></ul>
+    </div>
+
+    <label class="radio-volume">
+      VOLUME
+      <input id="radio-volume" type="range" min="0" max="1" step="0.01" value="0.8">
+    </label>
+
+    <audio id="radio-audio" preload="none"></audio>
+  </section>
+</main>
+
+<script>
+  const audio = document.getElementById('radio-audio');
+  const toggle = document.getElementById('radio-toggle');
+  const status = document.getElementById('radio-status');
+  const volume = document.getElementById('radio-volume');
+  const directLink = document.getElementById('radio-direct');
+  const badge = document.getElementById('radio-badge');
+  const listenersEl = document.getElementById('radio-listeners');
+  const nowBox = document.getElementById('radio-now');
+  const songEl = document.getElementById('radio-song');
+  const historyBox = document.getElementById('radio-history');
+  const historyList = document.getElementById('radio-history-list');
+
+  const streamCandidates = [
+    'https://winter-mountain-b15d.roothaktivity.workers.dev/',
+    'http://sl4.streamhood.net:8100/;'
+  ];
+  const STATS_URL = 'https://winter-mountain-b15d.roothaktivity.workers.dev/stats';
+  let candidateIndex = 0;
+
+  audio.volume = volume.value;
+
+  volume.addEventListener('input', function () {
+    audio.volume = this.value;
+  });
+
+  function tryNextStream() {
+    if (candidateIndex < streamCandidates.length) {
+      audio.src = streamCandidates[candidateIndex];
+      candidateIndex++;
+      audio.load();
+      return true;
     }
+    return false;
+  }
 
-    .radio-status {
-      color: var(--muted);
-      font-size: 0.85em;
-      letter-spacing: 1px;
-    }
-
-    #radio-direct {
-      display: none;
-    }
-
-    .radio-badge-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-top: 25px;
-    }
-
-    .radio-badge {
-      font-size: 0.8em;
-      font-weight: 900;
-      letter-spacing: 2px;
-      animation: badge-pulse 2s infinite;
-    }
-
-    @keyframes badge-pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.55; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .radio-badge { animation: none; }
-    }
-
-    .radio-listeners {
-      color: var(--muted);
-      font-size: 0.8em;
-      letter-spacing: 1px;
-    }
-
-    .radio-now {
-      display: none;
-      margin-top: 22px;
-      padding-top: 20px;
-      border-top: 1px solid var(--primary);
-    }
-
-    .radio-label {
-      color: var(--muted);
-      font-size: 0.75em;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
-    }
-
-    #radio-song {
-      color: var(--text);
-      font-weight: 700;
-      font-size: 1.05em;
-    }
-
-    .radio-history {
-      display: none;
-      margin-top: 22px;
-      padding-top: 20px;
-      border-top: 1px solid var(--primary);
-    }
-
-    .radio-history ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .radio-history li {
-      display: flex;
-      gap: 14px;
-      padding: 7px 0;
-      border-bottom: 1px solid rgba(209, 63, 198, 0.25);
-      font-size: 0.85em;
-    }
-
-    .history-time {
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    .history-title {
-      color: var(--text);
-    }
-
-    .radio-volume {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 25px;
-      padding-top: 20px;
-      border-top: 1px solid var(--primary);
-      color: var(--muted);
-    }
-
-    .radio-volume input {
-      accent-color: var(--accent);
-    }
-
-    @media (max-width: 600px) {
-      .radio-page {
-        margin: 90px 15px 30px;
-        padding: 10px;
-      }
-
-      .radio-player {
-        padding: 20px;
-      }
-
-      .radio-button {
-        width: 100%;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="bg-overlay"></div>
-
-  <main class="radio-page">
-    <section class="radio-player">
-      <div class="radio-player-header">
-        ROOTHAKTIVITY // LIVE TRANSMISSION
-      </div>
-
-      <h1>RootHaktivity Radio</h1>
-      <p>Independent signal // no unnecessary noise</p>
-
-      <div class="radio-controls">
-        <button id="radio-toggle" class="radio-button" type="button">
-          ▶ PLAY STREAM
-        </button>
-
-        <a id="radio-direct" class="radio-button" type="button"
-           href="http://sl4.streamhood.net:8100/;" target="_blank" rel="noopener">
-          OPEN IN PLAYER
-        </a>
-
-        <span id="radio-status" class="radio-status">
-          STANDBY
-        </span>
-      </div>
-
-      <div class="radio-badge-row">
-        <span id="radio-badge" class="radio-badge" style="color: #c7b6d9;">● CHECKING</span>
-        <span id="radio-listeners" class="radio-listeners"></span>
-      </div>
-
-      <div id="radio-now" class="radio-now">
-        <div class="radio-label">NOW PLAYING</div>
-        <div id="radio-song">—</div>
-      </div>
-
-      <div id="radio-history" class="radio-history">
-        <div class="radio-label">RECENTLY PLAYED</div>
-        <ul id="radio-history-list"></ul>
-      </div>
-
-      <label class="radio-volume">
-        VOLUME
-        <input id="radio-volume" type="range" min="0" max="1" step="0.01" value="0.8">
-      </label>
-
-      <audio id="radio-audio" preload="none"></audio>
-    </section>
-  </main>
-
-  <script>
-    const audio = document.getElementById('radio-audio');
-    const toggle = document.getElementById('radio-toggle');
-    const status = document.getElementById('radio-status');
-    const volume = document.getElementById('radio-volume');
-    const directLink = document.getElementById('radio-direct');
-    const badge = document.getElementById('radio-badge');
-    const listenersEl = document.getElementById('radio-listeners');
-    const nowBox = document.getElementById('radio-now');
-    const songEl = document.getElementById('radio-song');
-    const historyBox = document.getElementById('radio-history');
-    const historyList = document.getElementById('radio-history-list');
-
-    const streamCandidates = [
-      'https://winter-mountain-b15d.roothaktivity.workers.dev/',
-      'http://sl4.streamhood.net:8100/;'
-    ];
-    const STATS_URL = 'https://winter-mountain-b15d.roothaktivity.workers.dev/stats';
-    let candidateIndex = 0;
-
-    audio.volume = volume.value;
-
-    volume.addEventListener('input', function () {
-      audio.volume = this.value;
+  function renderHistory(items) {
+    historyList.innerHTML = '';
+    items.forEach(function (item) {
+      const li = document.createElement('li');
+      const time = document.createElement('span');
+      time.className = 'history-time';
+      time.textContent = item.time;
+      const title = document.createElement('span');
+      title.className = 'history-title';
+      title.textContent = item.title;
+      li.appendChild(time);
+      li.appendChild(title);
+      historyList.appendChild(li);
     });
+  }
 
-    function tryNextStream() {
-      if (candidateIndex < streamCandidates.length) {
-        audio.src = streamCandidates[candidateIndex];
-        candidateIndex++;
-        audio.load();
-        return true;
-      }
-      return false;
-    }
+  async function refreshStatus() {
+    if (document.hidden) return;
+    try {
+      const res = await fetch(STATS_URL, { cache: 'no-store' });
+      const data = await res.json();
 
-    // ---- Now playing / online status ----
-
-    function renderHistory(items) {
-      historyList.innerHTML = '';
-      items.forEach(function (item) {
-        const li = document.createElement('li');
-        const time = document.createElement('span');
-        time.className = 'history-time';
-        time.textContent = item.time;
-        const title = document.createElement('span');
-        title.className = 'history-title';
-        title.textContent = item.title;
-        li.appendChild(time);
-        li.appendChild(title);
-        historyList.appendChild(li);
-      });
-    }
-
-    async function refreshStatus() {
-      if (document.hidden) return;
-      try {
-        const res = await fetch(STATS_URL, { cache: 'no-store' });
-        const data = await res.json();
-
-        if (data.online) {
-          badge.textContent = '● ONLINE';
-          badge.style.color = '#39ff14';
-          listenersEl.textContent =
-            (data.listeners || 0) + ' LISTENING' +
-            (data.bitrate ? ' · ' + data.bitrate + ' KBPS' : '');
-          if (data.song) {
-            songEl.textContent = data.song;
-            nowBox.style.display = 'block';
-          } else {
-            nowBox.style.display = 'none';
-          }
-          if (data.history && data.history.length) {
-            renderHistory(data.history);
-            historyBox.style.display = 'block';
-          } else {
-            historyBox.style.display = 'none';
-          }
-          if (audio.paused) {
-            status.textContent = 'ONLINE';
-            status.style.color = '#c7b6d9';
-          }
+      if (data.online) {
+        badge.textContent = '● ONLINE';
+        badge.style.color = '#39ff14';
+        listenersEl.textContent =
+          (data.listeners || 0) + ' LISTENING' +
+          (data.bitrate ? ' · ' + data.bitrate + ' KBPS' : '');
+        if (data.song) {
+          songEl.textContent = data.song;
+          nowBox.style.display = 'block';
         } else {
-          badge.textContent = '● OFFLINE';
-          badge.style.color = '#d13fc6';
-          listenersEl.textContent = '';
           nowBox.style.display = 'none';
-          historyBox.style.display = 'none';
-          if (audio.paused) {
-            status.textContent = 'OFFLINE';
-            status.style.color = '#d13fc6';
-          }
         }
-      } catch (e) {
-        badge.textContent = '● NO SIGNAL';
-        badge.style.color = '#c7b6d9';
-      }
-    }
-
-    setInterval(refreshStatus, 20000);
-    refreshStatus();
-
-    // ---- Play / pause ----
-
-    toggle.addEventListener('click', async function () {
-      if (audio.paused) {
-        try {
-          await audio.play();
-
-          toggle.textContent = 'Ⅱ PAUSE STREAM';
-          status.textContent = 'ON AIR';
-          status.style.color = '#39ff14';
-          refreshStatus();
-        } catch (error) {
-          status.textContent = 'STREAM BLOCKED OR UNAVAILABLE';
-          status.style.color = '#d13fc6';
-          directLink.style.display = 'inline-block';
+        if (data.history && data.history.length) {
+          renderHistory(data.history);
+          historyBox.style.display = 'block';
+        } else {
+          historyBox.style.display = 'none';
+        }
+        if (audio.paused) {
+          status.textContent = 'ONLINE';
+          status.style.color = '#c7b6d9';
         }
       } else {
-        audio.pause();
+        badge.textContent = '● OFFLINE';
+        badge.style.color = '#d13fc6';
+        listenersEl.textContent = '';
+        nowBox.style.display = 'none';
+        historyBox.style.display = 'none';
+        if (audio.paused) {
+          status.textContent = 'OFFLINE';
+          status.style.color = '#d13fc6';
+        }
+      }
+    } catch (e) {
+      badge.textContent = '● NO SIGNAL';
+      badge.style.color = '#c7b6d9';
+    }
+  }
 
-        toggle.textContent = '▶ PLAY STREAM';
-        status.textContent = 'PAUSED';
-        status.style.color = '#c7b6d9';
+  setInterval(refreshStatus, 20000);
+  refreshStatus();
+
+  toggle.addEventListener('click', async function () {
+    if (audio.paused) {
+      try {
+        await audio.play();
+
+        toggle.textContent = 'Ⅱ PAUSE STREAM';
+        status.textContent = 'ON AIR';
+        status.style.color = '#39ff14';
         refreshStatus();
+      } catch (error) {
+        status.textContent = 'STREAM BLOCKED OR UNAVAILABLE';
+        status.style.color = '#d13fc6';
+        directLink.style.display = 'inline-block';
       }
-    });
+    } else {
+      audio.pause();
 
-    audio.addEventListener('error', function () {
-      if (candidateIndex < streamCandidates.length) {
-        tryNextStream();
-        audio.play().catch(function () {});
-        return;
-      }
-      status.textContent = 'STREAM ERROR';
-      status.style.color = '#d13fc6';
-      directLink.style.display = 'inline-block';
-    });
-  </script>
-</body>
-</html>
+      toggle.textContent = '▶ PLAY STREAM';
+      status.textContent = 'PAUSED';
+      status.style.color = '#c7b6d9';
+      refreshStatus();
+    }
+  });
+
+  audio.addEventListener('error', function () {
+    if (candidateIndex < streamCandidates.length) {
+      tryNextStream();
+      audio.play().catch(function () {});
+      return;
+    }
+    status.textContent = 'STREAM ERROR';
+    status.style.color = '#d13fc6';
+    directLink.style.display = 'inline-block';
+  });
+</script>

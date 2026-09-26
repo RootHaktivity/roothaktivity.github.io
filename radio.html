@@ -334,6 +334,7 @@ layout: default
   toggle.addEventListener('click', async function () {
     if (audio.paused) {
       try {
+        if (!audio.src) tryNextStream();
         await audio.play();
 
         toggle.textContent = 'Ⅱ PAUSE STREAM';

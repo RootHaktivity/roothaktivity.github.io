@@ -63,6 +63,8 @@ layout: default
       font-weight: 900;
       letter-spacing: 1px;
       box-shadow: var(--glow-green);
+      text-decoration: none;
+      text-align: center;
     }
 
     .radio-button:hover {
@@ -78,6 +80,89 @@ layout: default
       letter-spacing: 1px;
     }
 
+    #radio-direct {
+      display: none;
+    }
+
+    .radio-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 25px;
+    }
+
+    .radio-badge {
+      font-size: 0.8em;
+      font-weight: 900;
+      letter-spacing: 2px;
+      animation: badge-pulse 2s infinite;
+    }
+
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.55; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .radio-badge { animation: none; }
+    }
+
+    .radio-listeners {
+      color: var(--muted);
+      font-size: 0.8em;
+      letter-spacing: 1px;
+    }
+
+    .radio-now {
+      display: none;
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid var(--primary);
+    }
+
+    .radio-label {
+      color: var(--muted);
+      font-size: 0.75em;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    #radio-song {
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.05em;
+    }
+
+    .radio-history {
+      display: none;
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid var(--primary);
+    }
+
+    .radio-history ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .radio-history li {
+      display: flex;
+      gap: 14px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(209, 63, 198, 0.25);
+      font-size: 0.85em;
+    }
+
+    .history-time {
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .history-title {
+      color: var(--text);
+    }
+
     .radio-volume {
       display: flex;
       align-items: center;
@@ -90,13 +175,6 @@ layout: default
 
     .radio-volume input {
       accent-color: var(--accent);
-    }
-
-    /* NEW: hidden fallback link, shown only if every stream URL fails */
-    #radio-direct {
-      display: none;
-      text-decoration: none;
-      text-align: center;
     }
 
     @media (max-width: 600px) {
@@ -143,6 +221,21 @@ layout: default
         </span>
       </div>
 
+      <div class="radio-badge-row">
+        <span id="radio-badge" class="radio-badge" style="color: #c7b6d9;">● CHECKING</span>
+        <span id="radio-listeners" class="radio-listeners"></span>
+      </div>
+
+      <div id="radio-now" class="radio-now">
+        <div class="radio-label">NOW PLAYING</div>
+        <div id="radio-song">—</div>
+      </div>
+
+      <div id="radio-history" class="radio-history">
+        <div class="radio-label">RECENTLY PLAYED</div>
+        <ul id="radio-history-list"></ul>
+      </div>
+
       <label class="radio-volume">
         VOLUME
         <input id="radio-volume" type="range" min="0" max="1" step="0.01" value="0.8">
@@ -158,13 +251,18 @@ layout: default
     const status = document.getElementById('radio-status');
     const volume = document.getElementById('radio-volume');
     const directLink = document.getElementById('radio-direct');
+    const badge = document.getElementById('radio-badge');
+    const listenersEl = document.getElementById('radio-listeners');
+    const nowBox = document.getElementById('radio-now');
+    const songEl = document.getElementById('radio-song');
+    const historyBox = document.getElementById('radio-history');
+    const historyList = document.getElementById('radio-history-list');
 
-    // CHANGED: HTTPS worker proxy first (works on GitHub Pages),
-    // original HTTP stream as fallback
     const streamCandidates = [
       'https://winter-mountain-b15d.roothaktivity.workers.dev/',
       'http://sl4.streamhood.net:8100/;'
     ];
+    const STATS_URL = 'https://winter-mountain-b15d.roothaktivity.workers.dev/stats';
     let candidateIndex = 0;
 
     audio.volume = volume.value;
@@ -183,20 +281,83 @@ layout: default
       return false;
     }
 
+    // ---- Now playing / online status ----
+
+    function renderHistory(items) {
+      historyList.innerHTML = '';
+      items.forEach(function (item) {
+        const li = document.createElement('li');
+        const time = document.createElement('span');
+        time.className = 'history-time';
+        time.textContent = item.time;
+        const title = document.createElement('span');
+        title.className = 'history-title';
+        title.textContent = item.title;
+        li.appendChild(time);
+        li.appendChild(title);
+        historyList.appendChild(li);
+      });
+    }
+
+    async function refreshStatus() {
+      if (document.hidden) return;
+      try {
+        const res = await fetch(STATS_URL, { cache: 'no-store' });
+        const data = await res.json();
+
+        if (data.online) {
+          badge.textContent = '● ONLINE';
+          badge.style.color = '#39ff14';
+          listenersEl.textContent =
+            (data.listeners || 0) + ' LISTENING' +
+            (data.bitrate ? ' · ' + data.bitrate + ' KBPS' : '');
+          if (data.song) {
+            songEl.textContent = data.song;
+            nowBox.style.display = 'block';
+          } else {
+            nowBox.style.display = 'none';
+          }
+          if (data.history && data.history.length) {
+            renderHistory(data.history);
+            historyBox.style.display = 'block';
+          } else {
+            historyBox.style.display = 'none';
+          }
+          if (audio.paused) {
+            status.textContent = 'ONLINE';
+            status.style.color = '#c7b6d9';
+          }
+        } else {
+          badge.textContent = '● OFFLINE';
+          badge.style.color = '#d13fc6';
+          listenersEl.textContent = '';
+          nowBox.style.display = 'none';
+          historyBox.style.display = 'none';
+          if (audio.paused) {
+            status.textContent = 'OFFLINE';
+            status.style.color = '#d13fc6';
+          }
+        }
+      } catch (e) {
+        badge.textContent = '● NO SIGNAL';
+        badge.style.color = '#c7b6d9';
+      }
+    }
+
+    setInterval(refreshStatus, 20000);
+    refreshStatus();
+
+    // ---- Play / pause ----
+
     toggle.addEventListener('click', async function () {
       if (audio.paused) {
-        candidateIndex = 0;
-        directLink.style.display = 'none';
-        status.textContent = 'TUNING...';
-        status.style.color = '#c7b6d9';
-        tryNextStream();
-
         try {
           await audio.play();
 
           toggle.textContent = 'Ⅱ PAUSE STREAM';
           status.textContent = 'ON AIR';
           status.style.color = '#39ff14';
+          refreshStatus();
         } catch (error) {
           status.textContent = 'STREAM BLOCKED OR UNAVAILABLE';
           status.style.color = '#d13fc6';
@@ -208,11 +369,11 @@ layout: default
         toggle.textContent = '▶ PLAY STREAM';
         status.textContent = 'PAUSED';
         status.style.color = '#c7b6d9';
+        refreshStatus();
       }
     });
 
     audio.addEventListener('error', function () {
-      // try the next URL in the list before giving up
       if (candidateIndex < streamCandidates.length) {
         tryNextStream();
         audio.play().catch(function () {});

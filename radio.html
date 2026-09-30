@@ -244,23 +244,18 @@ layout: default
   const historyBox = document.getElementById('radio-history');
   const historyList = document.getElementById('radio-history-list');
 
+  // Akuma District is the only active station.
   const streamCandidates = [
-    'https://srv.akumadistrict.com:8140/radio.mp3',
-    'https://winter-mountain-b15d.roothaktivity.workers.dev/',
-    'http://sl4.streamhood.net:8100/;'
+    'https://srv.akumadistrict.com:8140/radio.mp3'
   ];
 
-  // Stats endpoints per stream. Both return the same JSON shape:
-  // { online, song, listeners, bitrate, history }
+  // Akuma stats via the Cloudflare worker (/akuma-stats route).
+  // Same JSON shape: { online, song, listeners, bitrate, history }
   const AKUMA_STATS = 'https://winter-mountain-b15d.roothaktivity.workers.dev/akuma-stats';
-  const STREAMHOOD_STATS = 'https://winter-mountain-b15d.roothaktivity.workers.dev/stats';
   let candidateIndex = 0;
 
   function activeStatsUrl() {
-    const src = audio.src || '';
-    if (src.indexOf('akumadistrict') !== -1) return AKUMA_STATS;
-    if (src.indexOf('winter-mountain') !== -1 || src.indexOf('streamhood') !== -1) return STREAMHOOD_STATS;
-    return AKUMA_STATS; // default station before the first play
+    return AKUMA_STATS;
   }
 
   audio.volume = volume.value;

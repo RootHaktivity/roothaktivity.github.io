@@ -198,7 +198,7 @@ layout: default
       </button>
 
       <a id="radio-direct" class="radio-button" type="button"
-         href="http://sl4.streamhood.net:8100/;" target="_blank" rel="noopener">
+         href="https://srv.akumadistrict.com:8140/radio.mp3" target="_blank" rel="noopener">
         OPEN IN PLAYER
       </a>
 
@@ -245,11 +245,23 @@ layout: default
   const historyList = document.getElementById('radio-history-list');
 
   const streamCandidates = [
+    'https://srv.akumadistrict.com:8140/radio.mp3',
     'https://winter-mountain-b15d.roothaktivity.workers.dev/',
     'http://sl4.streamhood.net:8100/;'
   ];
-  const STATS_URL = 'https://winter-mountain-b15d.roothaktivity.workers.dev/stats';
+
+  // Stats endpoints per stream. Both return the same JSON shape:
+  // { online, song, listeners, bitrate, history }
+  const AKUMA_STATS = 'https://winter-mountain-b15d.roothaktivity.workers.dev/akuma-stats';
+  const STREAMHOOD_STATS = 'https://winter-mountain-b15d.roothaktivity.workers.dev/stats';
   let candidateIndex = 0;
+
+  function activeStatsUrl() {
+    const src = audio.src || '';
+    if (src.indexOf('akumadistrict') !== -1) return AKUMA_STATS;
+    if (src.indexOf('winter-mountain') !== -1 || src.indexOf('streamhood') !== -1) return STREAMHOOD_STATS;
+    return AKUMA_STATS; // default station before the first play
+  }
 
   audio.volume = volume.value;
 
@@ -260,6 +272,7 @@ layout: default
   function tryNextStream() {
     if (candidateIndex < streamCandidates.length) {
       audio.src = streamCandidates[candidateIndex];
+      directLink.href = streamCandidates[candidateIndex];
       candidateIndex++;
       audio.load();
       return true;
@@ -286,7 +299,7 @@ layout: default
   async function refreshStatus() {
     if (document.hidden) return;
     try {
-      const res = await fetch(STATS_URL, { cache: 'no-store' });
+      const res = await fetch(activeStatsUrl(), { cache: 'no-store' });
       const data = await res.json();
 
       if (data.online) {
@@ -323,8 +336,10 @@ layout: default
         }
       }
     } catch (e) {
-      badge.textContent = '● NO SIGNAL';
+      badge.textContent = '● LIVE';
       badge.style.color = '#c7b6d9';
+      nowBox.style.display = 'none';
+      historyBox.style.display = 'none';
     }
   }
 

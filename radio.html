@@ -3,36 +3,28 @@ layout: default
 ---
 
 <style>
-  .radio-page {
-    max-width: 900px;
-    margin: 100px auto;
-    padding: 30px;
+  /* Radio page — built on the existing RootHaktivity theme
+     (.page-main + .page-title come from style.css, colors come from theme variables) */
+
+  .radio-eyebrow {
+    color: var(--muted);
+    font-size: 0.8em;
+    letter-spacing: 3px;
+    margin: 0;
+  }
+
+  .radio-tagline {
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-top: -20px;
   }
 
   .radio-player {
     background: var(--surface);
     border: 2px solid var(--primary);
-    padding: 28px;
     box-shadow: var(--glow-pink);
-    font-family: 'Space Mono', monospace;
-  }
-
-  .radio-player-header {
-    color: var(--accent);
-    border-bottom: 1px solid var(--primary);
-    padding-bottom: 15px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-  }
-
-  .radio-player h1 {
-    color: var(--primary);
-    text-shadow: var(--glow-pink);
-    margin: 25px 0 5px;
-  }
-
-  .radio-player p {
-    color: var(--muted);
+    padding: 28px;
+    margin-top: 30px;
   }
 
   .radio-controls {
@@ -40,7 +32,6 @@ layout: default
     align-items: center;
     gap: 18px;
     flex-wrap: wrap;
-    margin-top: 25px;
   }
 
   .radio-button {
@@ -82,6 +73,7 @@ layout: default
   }
 
   .radio-badge {
+    color: var(--muted);
     font-size: 0.8em;
     font-weight: 900;
     letter-spacing: 2px;
@@ -103,7 +95,7 @@ layout: default
     letter-spacing: 1px;
   }
 
-  .radio-now {
+  .radio-panel {
     display: none;
     margin-top: 22px;
     padding-top: 20px;
@@ -121,13 +113,6 @@ layout: default
     color: var(--text);
     font-weight: 700;
     font-size: 1.05em;
-  }
-
-  .radio-history {
-    display: none;
-    margin-top: 22px;
-    padding-top: 20px;
-    border-top: 1px solid var(--primary);
   }
 
   .radio-history ul {
@@ -168,56 +153,42 @@ layout: default
   }
 
   @media (max-width: 600px) {
-    .radio-page {
-      margin: 90px 15px 30px;
-      padding: 10px;
-    }
-
-    .radio-player {
-      padding: 20px;
-    }
-
     .radio-button {
       width: 100%;
     }
   }
 </style>
 
-<main class="radio-page">
+<main class="page-main">
+  <p class="radio-eyebrow">ROOTHAKTIVITY // LIVE TRANSMISSION</p>
+  <h1 class="page-title">RADIO</h1>
+  <p class="radio-tagline">Independent signal // no unnecessary noise</p>
+
   <section class="radio-player">
-    <div class="radio-player-header">
-      ROOTHAKTIVITY // LIVE TRANSMISSION
-    </div>
-
-    <h1>RootHaktivity Radio</h1>
-    <p>Independent signal // no unnecessary noise</p>
-
     <div class="radio-controls">
       <button id="radio-toggle" class="radio-button" type="button">
         ▶ PLAY STREAM
       </button>
 
-      <a id="radio-direct" class="radio-button" type="button"
-         href="https://srv.akumadistrict.com:8140/radio.mp3" target="_blank" rel="noopener">
+      <a id="radio-direct" class="radio-button"
+         href="https://srv.akumadistrict.com:8150/radio.mp3" target="_blank" rel="noopener">
         OPEN IN PLAYER
       </a>
 
-      <span id="radio-status" class="radio-status">
-        STANDBY
-      </span>
+      <span id="radio-status" class="radio-status">STANDBY</span>
     </div>
 
     <div class="radio-badge-row">
-      <span id="radio-badge" class="radio-badge" style="color: #c7b6d9;">● CHECKING</span>
+      <span id="radio-badge" class="radio-badge">● CHECKING</span>
       <span id="radio-listeners" class="radio-listeners"></span>
     </div>
 
-    <div id="radio-now" class="radio-now">
+    <div id="radio-now" class="radio-panel">
       <div class="radio-label">NOW PLAYING</div>
       <div id="radio-song">—</div>
     </div>
 
-    <div id="radio-history" class="radio-history">
+    <div id="radio-history" class="radio-panel radio-history">
       <div class="radio-label">RECENTLY PLAYED</div>
       <ul id="radio-history-list"></ul>
     </div>
@@ -244,19 +215,10 @@ layout: default
   const historyBox = document.getElementById('radio-history');
   const historyList = document.getElementById('radio-history-list');
 
-  // Akuma District is the only active station.
-  const streamCandidates = [
-    'https://srv.akumadistrict.com:8140/radio.mp3'
-  ];
-
-  // Akuma stats via the Cloudflare worker (/akuma-stats route).
-  // Same JSON shape: { online, song, listeners, bitrate, history }
-  const AKUMA_STATS = 'https://winter-mountain-b15d.roothaktivity.workers.dev/akuma-stats';
-  let candidateIndex = 0;
-
-  function activeStatsUrl() {
-    return AKUMA_STATS;
-  }
+  // AzuraCast AutoDJ listener stream and station API.
+  const STREAM_URL = 'https://srv.akumadistrict.com:8150/radio.mp3';
+  const NOW_PLAYING_API = 'https://srv.akumadistrict.com/api/nowplaying/stashbox21';
+  let streamLoaded = false;
 
   audio.volume = volume.value;
 
@@ -264,15 +226,12 @@ layout: default
     audio.volume = this.value;
   });
 
-  function tryNextStream() {
-    if (candidateIndex < streamCandidates.length) {
-      audio.src = streamCandidates[candidateIndex];
-      directLink.href = streamCandidates[candidateIndex];
-      candidateIndex++;
-      audio.load();
-      return true;
-    }
-    return false;
+  function loadStream() {
+    if (streamLoaded) return;
+    audio.src = STREAM_URL;
+    directLink.href = STREAM_URL;
+    audio.load();
+    streamLoaded = true;
   }
 
   function renderHistory(items) {
@@ -281,10 +240,15 @@ layout: default
       const li = document.createElement('li');
       const time = document.createElement('span');
       time.className = 'history-time';
-      time.textContent = item.time;
+      const playedAt = Number(item.played_at);
+      time.textContent = playedAt
+        ? new Date(playedAt * 1000).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })
+        : '';
       const title = document.createElement('span');
       title.className = 'history-title';
-      title.textContent = item.title;
+      title.textContent = item.song && (item.song.text || item.song.title)
+        ? (item.song.text || item.song.title)
+        : 'Unknown track';
       li.appendChild(time);
       li.appendChild(title);
       historyList.appendChild(li);
@@ -294,47 +258,60 @@ layout: default
   async function refreshStatus() {
     if (document.hidden) return;
     try {
-      const res = await fetch(activeStatsUrl(), { cache: 'no-store' });
+      const res = await fetch(NOW_PLAYING_API, { cache: 'no-store' });
+      if (!res.ok) throw new Error('Now Playing request failed: ' + res.status);
       const data = await res.json();
+      const station = data.station || {};
+      const nowPlaying = data.now_playing || {};
+      const song = nowPlaying.song || {};
+      const listenerCount = data.listeners && data.listeners.current;
+      const mount = (station.mounts || []).find(function (item) { return item.is_default; });
+      const bitrate = mount && mount.bitrate;
 
-      if (data.online) {
+      if (data.is_online) {
         badge.textContent = '● ONLINE';
-        badge.style.color = '#39ff14';
+        badge.style.color = 'var(--accent)';
         listenersEl.textContent =
-          (data.listeners || 0) + ' LISTENING' +
-          (data.bitrate ? ' · ' + data.bitrate + ' KBPS' : '');
-        if (data.song) {
-          songEl.textContent = data.song;
+          (listenerCount || 0) + ' LISTENING' +
+          (bitrate ? ' · ' + bitrate + ' KBPS' : '');
+        if (song.text || song.title) {
+          songEl.textContent = song.text || song.title;
           nowBox.style.display = 'block';
         } else {
           nowBox.style.display = 'none';
         }
-        if (data.history && data.history.length) {
-          renderHistory(data.history);
+        const history = data.song_history || [];
+        if (history.length) {
+          renderHistory(history);
           historyBox.style.display = 'block';
         } else {
           historyBox.style.display = 'none';
         }
         if (audio.paused) {
           status.textContent = 'ONLINE';
-          status.style.color = '#c7b6d9';
+          status.style.color = 'var(--muted)';
         }
       } else {
         badge.textContent = '● OFFLINE';
-        badge.style.color = '#d13fc6';
+        badge.style.color = 'var(--primary)';
         listenersEl.textContent = '';
         nowBox.style.display = 'none';
         historyBox.style.display = 'none';
         if (audio.paused) {
           status.textContent = 'OFFLINE';
-          status.style.color = '#d13fc6';
+          status.style.color = 'var(--primary)';
         }
       }
     } catch (e) {
-      badge.textContent = '● LIVE';
-      badge.style.color = '#c7b6d9';
+      badge.textContent = '● STATUS UNAVAILABLE';
+      badge.style.color = 'var(--muted)';
+      listenersEl.textContent = '';
       nowBox.style.display = 'none';
       historyBox.style.display = 'none';
+      if (audio.paused) {
+        status.textContent = 'STATUS CHECK FAILED';
+        status.style.color = 'var(--muted)';
+      }
     }
   }
 
@@ -344,36 +321,29 @@ layout: default
   toggle.addEventListener('click', async function () {
     if (audio.paused) {
       try {
-        if (!audio.src) tryNextStream();
+        loadStream();
         await audio.play();
-
         toggle.textContent = 'Ⅱ PAUSE STREAM';
         status.textContent = 'ON AIR';
-        status.style.color = '#39ff14';
+        status.style.color = 'var(--accent)';
         refreshStatus();
       } catch (error) {
         status.textContent = 'STREAM BLOCKED OR UNAVAILABLE';
-        status.style.color = '#d13fc6';
+        status.style.color = 'var(--primary)';
         directLink.style.display = 'inline-block';
       }
     } else {
       audio.pause();
-
       toggle.textContent = '▶ PLAY STREAM';
       status.textContent = 'PAUSED';
-      status.style.color = '#c7b6d9';
+      status.style.color = 'var(--muted)';
       refreshStatus();
     }
   });
 
   audio.addEventListener('error', function () {
-    if (candidateIndex < streamCandidates.length) {
-      tryNextStream();
-      audio.play().catch(function () {});
-      return;
-    }
     status.textContent = 'STREAM ERROR';
-    status.style.color = '#d13fc6';
+    status.style.color = 'var(--primary)';
     directLink.style.display = 'inline-block';
   });
 </script>
